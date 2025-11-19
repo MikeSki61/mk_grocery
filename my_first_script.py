@@ -23,3 +23,13 @@ milk = int("3")
 bread = 2.5
 total = str(milk + bread)
 print("The total cost is: $" + total)
+# ========================================================
+
+
+#Day 3 Exercises
+
+apples_tuple = ("apples", 0.50, 5)
+pears_tuple = ("pears", 1050, 2)
+bananas_tuple = ("bananas", 1.99, 5)
+
+
