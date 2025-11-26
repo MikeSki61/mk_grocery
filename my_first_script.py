@@ -865,36 +865,655 @@
 # print(shopping_list)
 
 # # Exercise 6
-items_list = [
-    {"name": "Ice Cream", "cost":5.25, "amount": 1},
-    {"name": "Hot Fudge", "cost":0.99, "amount": 1},
-    {"name": "Whip Cream Topping", "cost": 0.25, "amount": 1},
-]
+# items_list = [
+#     {"name": "Ice Cream", "cost":5.25, "amount": 1},
+#     {"name": "Hot Fudge", "cost":0.99, "amount": 1},
+#     {"name": "Whip Cream Topping", "cost": 0.25, "amount": 1},
+# ]
 
-shopping_list = []
-budget = 30.0
-total_cost = 0.0
-index = 0
+# shopping_list = []
+# budget = 30.0
+# total_cost = 0.0
+# index = 0
 
-while total_cost <= budget:
-    item = items_list[index]
-    item_total_cost = item["cost"] * item["amount"]
-    if total_cost + item_total_cost > budget:
-        break
-    shopping_list.append(item["name"])
-    total_cost += item_total_cost
-    index += 1
-    try:
-        int(index)
-    except ValueError:
-        print("Error: the index must be an integer")
-    for name in shopping_list:
-        print(name)
-    print("----------")
-    if "Ice Cream" in shopping_list and "Hot Fudge" in shopping_list and "Whip Cream Topping" in shopping_list:
-        print(f"We can make a hot fudge sunday for ${total_cost}")
-        break
-print(shopping_list)
+# while total_cost <= budget:
+#     item = items_list[index]
+#     item_total_cost = item["cost"] * item["amount"]
+#     if total_cost + item_total_cost > budget:
+#         break
+#     shopping_list.append(item["name"])
+#     total_cost += item_total_cost
+#     index += 1
+#     try:
+#         int(index)
+#     except ValueError:
+#         print("Error: the index must be an integer")
+#     for name in shopping_list:
+#         print(name)
+#     print("----------")
+#     if "Ice Cream" in shopping_list and "Hot Fudge" in shopping_list and "Whip Cream Topping" in shopping_list:
+#         print(f"We can make a hot fudge sunday for ${total_cost}")
+#         break
+# print(shopping_list)
+
+
+#====================================================
+#Day 5 Functions and Modules
+# def my_first_function():
+#     print("This is a function")
+
+# my_first_function()
+
+# What is a Function?
+# Definition: A function is a block of code that performs a specific task. 
+# You define it once, then you can use it (or “call” it) whenever you need that task done.
+# SYNTAX
+# def :every function begins with this keyword
+# function name :what you want to call the function ‘my_function_to_add’
+# parenthesis () :this is where parameters live
+# parameters  :variables that can be used as inputs of the function
+# colon : marks the end of your function definition.  
+# Indentation :the actual code block running the logic should be indented 
+
+# Example:
+# def print_something():
+#     print("Look! I’m printing something!")
+
+# CALLING A FUNCTION
+# Call (or "run") the function by typing its name followed by parentheses.
+
+# Example:
+# print_something()
+# Look, I'm printing something!  # Result
+
+# 3. Creating Your Own Functions
+# Think about tasks you often repeat, like displaying messages or simple calculations.
+# Functions make your code more organized and reusable.
+
+# 4. Function Naming Tips
+# Use descriptive names (like show_message or calculate_total).
+# Use lowercase letters and underscores between words for readability (snake_case).
+
+# Practice Exercises
+# Exercise 1: Displaying a Message
+# Define a function that prints a welcome message.
+# Call the function to see the message.
+
+# def greeting():
+#     print("Hello, welcome to this course.")
+# greeting()
+
+# Exercise 2: Print Your Favorite Food
+# Write a function named favorite_food that prints your favorite food.
+# Call the function to display the food.
+
+# def fav_food():
+#     print("My favorite food is Italian")
+# fav_food()
+
+# Exercise 3: show sum of numbers
+# Create a function named show_sum that adds 5 and 10, and then prints the result.
+# Call show_sum to see the result in action.
+
+# def show_sum():
+#     print(5 + 10)
+# show_sum()
+
+
+# Day 5: Parameters and Return Values
+# What Are Parameters?
+# Definition: Parameters are like placeholders in a function 
+# definition that let us pass data into the function. 
+# They help make functions more flexible and useful by allowing them 
+# to work with different inputs each time we call them.
+
+# Mandatory vs Optional Parameters
+# Mandatory parameters  are variables that the user needs to provide in order for the
+#  function to run. Optional Parameters are variables that are not required so the function will 
+# still run even if this is not provided during a function call and stores a default value for that parameter. 
+
+# Example: Write a function that prints the items in a grocery list. 
+
+# Step 1: Define the function.  We will use ‘grocery_list’ as the placeholder/parameter  
+# that will represent all the potential grocery lists we will use as input
+# def print_grocery_list_items(grocery_list):
+
+
+# Step 2: Code Block. What code needs to run to accomplish the task? 
+# print(grocery_list)
+
+
+# Putting them together:
+# def print_grocery_list_items(grocery_list):
+#     print(grocery_list) # Make sure code block is indented
+
+
+# In this example, grocery_list is a mandatory/required parameter because the function 
+# cannot run without it. 
+
+# Step 3: Call and Test the function. Use different grocery lists to see if it prints them based on which list you use as input
+# # Our Function:
+# def print_grocery_list_items(grocery_list):
+#     print(grocery_list)
+
+# # Test Lists:
+# fruits_grocery_list = ['apple', 'banana', 'grapes']
+# veggie_list = ['kale', 'eggplant', 'spinach', 'broccoli']
+# misc_items = ['shampoo', 'dishsoap', 'sponges']
+
+# # Test 1:
+# print_grocery_list_items(fruits_grocery_list)
+# ['apple', 'banana', 'grapes']  # RESULT
+
+# # Test 2:
+# print_grocery_list_items(veggie_list)
+# ['kale', 'eggplant', 'spinach', 'broccoli']  # RESULT
+
+# # Test 3:
+# print_grocery_list_items(misc_items)
+# # ['shampoo', 'dishsoap', 'sponges']  # RESULT
+
+ 
+# # Step 4: Improve the function if possible.  To make the output look cleaner, we can be more explicit with what we are printing and instead of printing the list as-is, we can use a for loop to print each item one at a time.
+# def print_grocery_list_items(grocery_list):
+#     print("We need to buy the following: ") # Be more explicit 
+#     for item in grocery_list:
+#         print(item)  # print each item one at a time
+
+# # # Call the function using fruits_grocery_list
+# print_grocery_list_items(fruits_grocery_list)
+
+# # RESULT:
+# We need to buy the following:
+# apple
+# banana
+# grapes
+
+# Step 5: Extend the functionality using optional parameters. We will use ‘nice_to_have_list’ as an 
+# optional parameter to include items that we want but don’t necessarily need to buy. 
+
+# Note: A parameter becomes optional when you give it a default value. 
+# Remember to ALWAYS put optional parameters after the required parameters. 
+
+# def print_grocery_list_items(grocery_list, nice_to_have_list=None):
+
+
+#  In this case, the default value of nice_to_have_list is None, meaning we don’t have 
+# a ‘nice to have’ list. This is optional because the function can still run 
+# even if this input is not provided. It mainly says that the function will 
+# perform additional/different tasks if the value is different from the default.
+
+# Step 6: Additional task for optional parameter. What will the function do if the 
+# user provides a value for nice_to_have_list?
+# New Task:  if we provide a nice to have list, then we want to print that “If possible, 
+# it would be nice to buy the following as well:” 
+
+# if nice_to_have_list != None:  # != means 'not equal to' 
+#     print("If possible, it would be nice to buy the following as well:")
+#     for item in nice_to_have_list:
+#         print(item)
+
+
+# We can further improve this block by using 
+# if nice_to_have_list:
+
+# This checks for empty values. So instead of just checking if this variable is NOT None, we are also making sure that  nice_to_have_list is NOT 0, [ ] (an empty list), { } (an empty dictionary/set),   ‘ ’ ( a blank string), or False. 
+
+# Putting it all together we have:
+
+
+def print_grocery_list_items(grocery_list, nice_to_have_list=None):
+    print("We need to buy the following: ")
+    for item in grocery_list:
+        print(item) 
+
+    if nice_to_have_list:
+        # ‘\n’ means new line. So this will add a blank line
+        print("\nIf possible, it would be nice to buy the following as well:")
+        for item in nice_to_have_list:
+            print(item)
+
+
+
+# Step 7: Test the optional parameter. Create a test list and try calling the function with and without the optional parameter. 
+# # test list
+# desserts_list = ['tiramisu', 'ice cream', 'candy bar']
+# fruits_grocery_list = ['apple', 'banana', 'grapes']
+
+# # Call the function WITHOUT the optional parameter
+# print_grocery_list_items(fruits_grocery_list)
+
+# # RESULT:
+# We need to buy the following:
+# apple
+# banana
+# grapes
+
+# # Call the function WITH the optional parameter
+# print_grocery_list_items(fruits_grocery_list, nice_to_have_list=desserts_list)
+
+# # RESULT:
+# We need to buy the following:
+# apple
+# banana
+# grapes
+
+# If possible, it would be nice to buy the following as well:
+# tiramisu
+# ice cream
+# candy bar
+
+# More Examples of a Function with Parameters
+# Let’s create a function that checks if a certain grocery item is available in stock. The function will take two parameters: item_name and stock_status.
+# def check_availability(item_name, stock_status):
+#     if stock_status:
+#         print(f"{item_name} is available.")
+#     else:
+#         print(f"{item_name} is out of stock.")
+
+
+# Here, item_name and stock_status are parameters. Each time we call check_availability(), we can pass in different items and stock statuses:
+# check_availability("Bananas", True)   
+# # Output: Bananas is available.
+
+# check_availability("Milk", False)     
+# # Output: Milk is out of stock.
+
+
+
+# Multiple Parameters
+# You can add more parameters as needed but make sure that you follow the same sequence of parameters when calling the function. For instance, let’s add a store_name parameter to specify where the item is available:
+# def check_availability_in_store(item_name, stock_status, store_name):
+#     if stock_status:
+#         print(f"{item_name} is available at {store_name}")
+#     else:
+#         print(f"{item_name} is out of stock at {store_name}")
+
+
+# Now, we can specify the store name each time we call check_availability_in_store():
+#                         # item_name  stock_status  store_name
+# check_availability_in_store("Apples", True, "SuperMart")    
+# # Output: Apples is available at SuperMart.
+#                         # item_name  stock_status  store_name
+# check_availability_in_store("Eggs", False, "Fresh Foods")   
+# # Output: Eggs is out of stock at Fresh Foods.
+
+ 
+# What Is A Return Value?
+# Definition: A return value is the result a function gives back after it completes a task. Instead of just printing something, the function returns data so we can store it a variable and use it elsewhere in the code
+
+# Example:
+# Write a function that returns a message about the freshness of produce:
+# def check_freshness(item_name, days_since_purchase):
+#     if days_since_purchase < 3:
+#         return f"{item_name} is fresh."
+#     else:
+#         return f"{item_name} might be past its prime."
+
+
+# Here, check_freshness() returns a message based on how many days have passed. We can store this result in a variable or use it directly:
+# message = check_freshness("Lettuce", 3)
+# print(message)                    
+# # Output: Lettuce is fresh.
+
+# print(check_freshness("Tomatoes", 7))  
+# # Output: Tomatoes might be past its prime.
+
+
+# Why Use Return Values?
+# Return values allow us to get information back from a function and use it elsewhere in the code, making our functions more versatile.
+# Practice Exercises
+# Exercise 1: Grocery Item Search
+# Create a function find_item that takes two parameters, item_name and is_available, and prints whether or not the item is available.
+# def find_item(item_name, is_available):
+#     if is_available:
+#         return f"{item_name} is available."
+#     else:
+#         return f"{item_name} is not available."
+
+# message = find_item("Orange Juice", True)
+# print(message)
+# message = find_item("Bread", False)
+# print(message)
+
+# Example Output:
+# find_item("Orange Juice", True)   
+# # Expected output: Orange Juice is available.
+
+# find_item("Bread", False)         
+# # Expected output: Bread is not available.
+
+
+# Exercise 2: Favorite Snack
+# Write a function favorite_snack that takes two parameters, snack_name and quantity_left, and returns a message based on how much of the snack is left.
+
+# # 2
+# def favorite_snack(snack_name, quantity_left):
+#     if quantity_left:
+#         return f"You have some {snack_name} left to enjoy!"
+#     else:
+#         return f"You are out of {snack_name}."
+
+# print(favorite_snack("Chips", 3))
+# print(favorite_snack("Cookies", 0))
+# Example Output:
+# print(favorite_snack("Chips", 3))  
+# # Expected output: You have some Chips left to enjoy!
+# print(favorite_snack("Cookies", 0)) 
+#  # Expected output: You're out of Cookies!
+
+
+# Exercise 3:  Store Item Location
+# Create a function item_location that takes two parameters, item_name and store_section, 
+# and returns a message about where to find the item in the store.
+# def item_location(item_name, store_section):
+#     return f"You can find {item_name} in the {store_section}."
+
+# print(item_location("Milke", "Dairy Aisle"))
+# print(item_location("Apples", "Produce Section"))
+
+# Example Output:
+# print(item_location("Milk", "Dairy Aisle"))      
+# # Expected output: Find Milk in the Dairy Aisle.
+
+# print(item_location("Apples", "Produce Section")) 
+# # Expected output: Find Apples in the Produce Section.
+
+
+# Day 5: Scope and Lifetime of Variables
+# Variable Scope and Lifetime in Python help us control where and how long 
+# variables are accessible in our code. Understanding these concepts can 
+# prevent errors and improve code organization.
+
+# SCOPE OF VARIABLES
+# Definition: Scope defines where in your program you can use a variable. 
+# It determines where a variable can be accessed. There are two main types of scope:
+# Global Scope: Variables defined outside of any function or block. Accessible throughout the entire program.
+# Example:
+# message = "I love chocolate!"
+# def chocolate():
+#     print(message)
+
+# # test inside a function
+# chocolate()
+# I love chocolate!  # output
+
+# # test outside a function
+# print(message)
+# I love chocolate!  # output
+
+# In this case, ‘message’ is defined outside any function, so it has global scope and is accessible anywhere in the program.
+# TIP: Global constants, which do not change, are usually written in uppercase (e.g., PI = 3.14159).
+# Local Scope: Variables defined within a function or block. Accessible only within that specific function or block.
+# Example:
+# def chocolate():
+#     message = "I love chocolate!"
+#     print(message)
+
+# # test inside a function
+# chocolate()
+# I love chocolate!  # output
+
+# # test outside a function
+# print(message)  
+# Error: NameError - 'message' is not defined  # Errors out
+
+
+# In this example, message is defined inside the chocolate() function, making it 
+# local to chocolate. It is inaccessible outside this function.
+
+
+
+
+# LIFETIME OF VARIABLES
+# Definition: Lifetime refers to how long a variable exists in memory.
+# Global Variables exist throughout the entire runtime of the program.
+# Local Variables only exist during the execution of the function in which 
+# they’re defined. Once the function completes, these variables are discarded.
+# Example:
+
+# def greet():
+#     name = "Skyler"
+#     print(f"Hello, {name}!")
+
+# # test inside a function
+# greet()
+# Hello, Skyler!   # output
+
+# # test outside a function
+# print(name)        
+# Error: NameError - name is not defined  # Errors out
+
+# Here, name only exists within the greet() function. After greet() finishes, 
+# name is removed from memory therefore throwing an error saying that ‘name’ is not defined.
+
+
+# Why Scope and Lifetime Matter
+# Avoid Errors: Prevents accidental use of variables that don’t exist in the current scope.
+# Organized Code: Helps structure code by keeping variables only where they’re needed.
+# Efficient Memory Use: Local variables are discarded after use, freeing up memory.
+
+
+# Practice Exercises
+# Exercise 1: Local and Global Variables
+# Write a function favorite_food() that prints your favorite food stored in a 
+# local variable called food. Then, create a global variable food and set it to something else. Print both to observe the scope difference.
+# food = "Pizza"   # Global variable
+
+# def favorite_food():
+#     food = "Sushi"   # Local variable
+#     print("Local food:", food)
+
+# favorite_food()              # Prints: Local food: Sushi
+# print("Global food:", food)  # Prints: Global food: Pizza
+
+
+
+# Exercise 2: Variable Lifetime in Functions
+# Define a function counter() that initializes a local variable count to 0 
+# and increments it by 1 each time counter() is called. Print count after each call and observe the results.
+# def counter():
+#     count = 0      # Local variable
+#     count += 1
+#     print("Count:", count)
+
+# counter()          # Prints: Count: 1
+# counter()          # Prints: Count: 1
+
+
+# Each call to counter() reinitializes count to 0 due to the local scope of count.
+
+# Exercise 3: Combining Scope and Lifetime
+# Create a program where you have a global variable user_name set to your name. 
+# 
+# Inside a function change_name(), create a new local variable also named user_name, 
+# but set it to something else. Print both user_name variables (inside and outside the function) 
+# to see the effect of scope on variable values.
+# user_name = "Skyler"   # Global variable
+
+# def change_name():
+#     user_name = "sfines"  # Local variable
+#     print("Inside function:", user_name)
+
+# change_name()                         # Prints: Inside function: sfines
+# print("Outside function:", user_name) # Prints: Outside function: Skyler
+
+# The local user_name inside change_name() does not affect the global user_name.
+
+
+# Modules in Python
+
+# MODULES
+# Definition: A module is a Python file that contains code you can reuse in other 
+# parts of your project. Modules help in organizing related functions, classes, and v
+# ariables together so that your code becomes more structured and easier to manage.
+
+# Key Concepts:
+# Built-in Modules: Python comes with many built-in modules, such as math, random, and
+# datetime, which provide a wide range of functionalities
+# .Example:
+# import math
+# print(math.sqrt(16))  
+# 4.0  # output
+
+# In this example, the math module provides a function sqrt() to calculate the square root 
+# of a number. We can use this instead of writing our own function.
+
+# Custom Modules: You can create your own modules by writing reusable functions in separate
+# Python files and importing them into your main script.
+# Example:
+# Step 1: Create a file called greetings.py with the following content:
+# def say_hello(name):
+#     return f"Hello, {name}!"
+
+
+# Step 2: Now, in another file, in the same directory, import and use the custom module:
+# import greetings
+# print(greetings.say_hello("Skyler")) 
+# Hello, Skyler!  # output
+
+# This greetings.py file can be used as a module in any other python script you have by importing it.
+# Note: The filename for modules should end in .py.
+
+
+
+# WHY USE MODULES?
+
+# Code Reusability: Modules allow you to write code once and use it multiple times, saving time and effort.
+
+# Organized Structure: Keeping related functions in separate files helps keep your project clean and easy to understand.
+
+# Easier Maintenance: If you need to make changes, you only need to update the module,
+# which reflects the changes everywhere it’s used.
+
+# Example: Imagine you have a function to calculate tax in multiple scripts. 
+# Instead of rewriting the function each time, you can create a module called tax_calculator.py 
+# and import it wherever you need it. This reduces redundancy and makes future updates easier.
+
+
+
+
+
+# HOW TO IMPORT MODULES
+# Import the Entire Module:
+# import random
+# print(random.randint(1, 10))  # Prints a random number between 1 and 10
+
+# This imports all functions and variables from the random module. You need to specify the 
+# name of the module followed by the name of the function using dot notation ‘.’ to make 
+# this work. In this example, the function randint comes from the random module so we call
+# it by using: random.randint(parameter1, parameter2)
+
+# Import Specific Functions or Variables:
+# from math import pi, sqrt
+
+# print(pi)
+# 3.141592653589793   # output
+
+# print(sqrt(25))
+# 5.0   # output
+
+# Only the specified items (pi and sqrt) are imported, making the code easier to read. 
+# In this case, you can only use ‘pi’ and ‘sqrt’. If you need to use other functions 
+# living under math, you have to explicitly import those as well. 
+# Using Aliases:
+# import os as o  # we use alias o instead of os
+
+# # Example using os.getcwd() to get the current working directory
+# current_directory = o.getcwd()
+# print(current_directory)
+# # Output
+# # The current working directory (e.g., '/home/user/projects')
+
+# Aliases can make module names shorter, simplifying code writing.
+# Creating and Importing Modules
+
+# To create your own modules, you simply write Python code in a separate file and then import it.
+# Creating Module A:
+# Step 1: Create a new file called module_a.py. 
+# Write a simple function inside module_a.py named ‘welcome’:
+# def welcome():
+#     print("Welcome to Module A!")
+
+
+# Creating Module B:
+# 	Step 2: Create another file called module_b.py.
+# Import module_a in module_b and call the function:
+# import module_a
+
+# def call_module_a():
+#     print("Calling Module A from Module B")
+#     module_a.welcome()
+
+# # run
+# call_module_a()
+
+# # output
+# Calling Module A from Module B
+# Welcome to Module A!
+
+# When you run module_b.py, you will see the messages from both modules, showing how one module 
+# can call functions from another.
+
+# SPECIAL MODULE CONCEPTS
+# Key Concepts:
+# if __name__ == "__main__": This line is used to control when certain parts of your code should run.
+# This makes sure that the code we want to execute only executes if the file is being run directly.
+# It prevents code from  running if we want to use a python file as a module but still allows us to
+#  execute the code in this file if needed.
+# # In a file named example.py
+# def example_function():
+#     print("This is an example function.")
+
+# if __name__ == "__main__":
+#     example_function()
+
+# if we remove the line if __name__ == "__main__":, when we import example.py into another module,
+# it will execute example_function() automatically even if we don't want it to.  Here’s why:
+# In Python, every script has a special built-in variable called __name__. This variable helps
+# determine how the script is being used.
+# When you run the script directly by running python example.py in the terminal, Python 
+# sets the variable __name__ to the value "__main__". This tells Python that this is the 
+# main program being executed. You can test this by running this in your script:
+# # Example: example.py
+# print(__name__)  # This will print: __main__
+
+# When you import the script as a module into another file, Python sets __name__ to the name 
+# of the file/module, in this case, the value would be “example”. Because the condition 
+# requires __name__ to have the value “__main__”, it won’t run the code automatically.
+
+# __init__.py: This file is used to mark a directory as a Python package. This allows you 
+# to group related modules together. Although it became optional in Python 3.3+, it’s still 
+# commonly used to initialize packages and manage what gets imported when a package is imported.
+
+
+# Practice Exercises
+# Exercise 1: Create a Custom Module: 
+# Follow the instructions above and create module_a.py and module_b.py. Try running the 
+# commands mentioned on your own. Add functions in module_a and try calling them in module_b.
+
+# Exercise 2: Import Specific Functions
+# From the datetime module, import the date class and print today’s date.
+# from datetime import date
+from datetime import date
+print(date.today())
+# print(date.today())  # Prints today's date, e.g., 2024-11-10
+
+
+# Exercise 3: Applying special module concepts:
+# Modify the code you have in module_a so that it runs the function welcome() only when 
+# you directly execute it (won't automatically run if you import it onto module b).
+
+
+
+
+
+
+
+
+
+
+
 
 
 
