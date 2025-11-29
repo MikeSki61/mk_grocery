@@ -1,17 +1,4 @@
-"""
-mk_launch.py
-This file is the launch file that imports the functions for the app.
-It includes the ability to add, remove, edit, and export the list.
 
-Functions are:
--add_items(): Add items to the list.
--remove_items(): Removes items from the list.
--edit_items(): Edits any item within the list. Any value can be edited.
--export_items(): Able to export the list.
-
-Author: Mike Kwiatkowsky
-Version:1.0.0
-"""
 import mk_core
 print("Welcome to the brand new MK Grocery APP!")
 
@@ -43,7 +30,7 @@ def launch():
         if command == "edit": # This is the command to be used to edit
             # items in the list.
             print("This allows you to edit any item on yoiur shopping list.")
-            name, store, cost, amount, priority, buy = get_inputs()
+            name, store, cost, amount, priority, buy=get_inputs()
 
             mk_core.edit_item(name, store, cost, amount, priority, buy)
             print(f"{name} was edited.")
