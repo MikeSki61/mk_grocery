@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0]  - 20205-11-28
+## [1.2.0]  - 20205-11-28
 
 ## Aded Day-6-coding-standards
 
