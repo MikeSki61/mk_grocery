@@ -1,6 +1,25 @@
 # Changelog
 
-## [1.0.0 - 2025 11 26]
+## [2.0.0]  - 20205-11-28
+
+## Aded Day-6-coding-standards
+
+- No changes to functionality only style-related changes.
+- Updated all indentation to use 4 spaces instead of tabs.
+- Reformatted code to ensure no line exceeds 79 characters.
+- Adjusted multiline statements for better readability.
+- Removed trailing whitespaces.
+- Added proper spacing around operators and after commas.
+- Ensured 2 blank lines between top-level functions and class definitions.
+- Added 1 blank line between methods inside classes.
+- Renamed variables, functions, and constants to follow PEP 8 conventions:
+- Grouped imports into Standard library, Third-party, Local.
+- Added/updated docstrings for functions and classes.
+- Ensured comments are concise and written in full sentences.
+- Added type hints to function signatures for better clarity.
+
+
+## [1.0.0] - 2025 11 26
 
 ### Added
 - mk_core.py: add functions to add, edit, list, 

@@ -1062,16 +1062,16 @@
 # Putting it all together we have:
 
 
-def print_grocery_list_items(grocery_list, nice_to_have_list=None):
-    print("We need to buy the following: ")
-    for item in grocery_list:
-        print(item) 
+# def print_grocery_list_items(grocery_list, nice_to_have_list=None):
+#     print("We need to buy the following: ")
+#     for item in grocery_list:
+#         print(item) 
 
-    if nice_to_have_list:
-        # ‘\n’ means new line. So this will add a blank line
-        print("\nIf possible, it would be nice to buy the following as well:")
-        for item in nice_to_have_list:
-            print(item)
+#     if nice_to_have_list:
+#         # ‘\n’ means new line. So this will add a blank line
+#         print("\nIf possible, it would be nice to buy the following as well:")
+#         for item in nice_to_have_list:
+#             print(item)
 
 
 
@@ -1495,14 +1495,1122 @@ def print_grocery_list_items(grocery_list, nice_to_have_list=None):
 # Exercise 2: Import Specific Functions
 # From the datetime module, import the date class and print today’s date.
 # from datetime import date
-from datetime import date
-print(date.today())
-# print(date.today())  # Prints today's date, e.g., 2024-11-10
+# from datetime import date
+# print(date.today())
+# # print(date.today())  # Prints today's date, e.g., 2024-11-10
 
 
-# Exercise 3: Applying special module concepts:
-# Modify the code you have in module_a so that it runs the function welcome() only when 
-# you directly execute it (won't automatically run if you import it onto module b).
+# # Exercise 3: Applying special module concepts:
+# # Modify the code you have in module_a so that it runs the function welcome() only when 
+# # you directly execute it (won't automatically run if you import it onto module b).
+
+
+# # ==========================================================================
+# # Day 6: Core PEP 8 Rules and Best Practices
+# WHAT IS PEP 8?
+# Definition: PEP 8 is Python's official Style Guide for Python Code. It outlines conventions to make Python code consistent, readable, and professional. Whether you're collaborating with a team or revisiting your own work, following PEP 8 ensures your code is clean and easy to understand.
+# Think of it as a set of rules for writing Python that not only makes your work look polished but also helps prevent common mistakes. Today, we’ll focus on some key PEP 8 principles, including indentation, line length, blank lines, and import organization.
+
+
+# INDENTATION
+# Indentation refers to the spaces at the beginning of a line of code that visually and syntactically define blocks of code in Python. For example, blocks in functions, loops, or conditionals must be indented to show that they belong together. Python enforces indentation as part of its syntax.
+
+# Rule: Use 4 spaces per indentation level. Avoid tabs.
+
+# Why it Matters: 
+# Indentation makes your code visually structured and ensures Python understands the hierarchy of your logic.
+# Using spaces instead of tabs avoids inconsistencies in how different editors display your code.
+
+# How to Set in VSCode:
+# Go to File > Preferences > Settings.
+# Search for "insert spaces".
+# Check the option for "Insert Spaces".
+
+
+
+
+# LINE LENGTH
+# Line length refers to the maximum number of characters allowed on a single line of code. Python’s PEP 8 recommends keeping lines at 79 characters or fewer.
+
+# Rule: Limit each line of code to 79 characters or fewer.
+
+# Why it Matters:
+# Makes code easier to read, especially on smaller screens or during side-by-side reviews.
+# Prevents long lines from becoming overwhelming or difficult to follow.
+
+# How to Add a Visual Ruler in VSCode:
+# Go to your settings
+
+# Search for Rulers and click on the settings.json file
+
+# Edit this line
+# "editor.rulers": [79]
+
+# Save
+
+
+
+# BLANKLINES (WHITESPACE)
+# Blank lines are intentional gaps between lines of code that visually separate sections. They act like paragraph breaks in writing, making your code easier to read and follow.
+
+# Rules:
+# Use two blank lines between top-level functions or classes.
+# Use one blank line between methods inside a class.
+
+# Why it Matters:
+# Blank lines make it easy to identify different parts of your code, like functions, classes, or logical sections.
+# They improve readability and maintain a clean structure.
+
+
+
+
+# ORGANIZING IMPORTS
+# Imports bring external modules and libraries into your program, allowing you to use their functions and tools. PEP 8 specifies guidelines for the placement and organization of imports.
+
+# Rules:
+# Place imports at the top of the file.
+# Follow this order:
+# Standard library imports (e.g., import os).
+# Third-party imports (e.g., import numpy).
+# Local imports (e.g., import core).
+# Alphabetize imports within each group.
+# Avoid wildcard imports (e.g., from module import *).
+
+# Why it Matters:
+# Organized imports clarify which libraries are used in your code.
+# Separating imports into groups helps collaborators quickly locate dependencies.
+# Alphabetizing imports improves consistency and readability.
+
+# How to Automate in VSCode:
+# Install the isort extension to automatically organize imports.
+
+
+
+
+
+# Identifying Standard vs. Third-Party Modules
+# How do I know if a module is part of the standard library or a third-party library?
+# Standard Library:
+# Modules that come bundled with Python by default (e.g., os, sys, math).
+# Check the Python Standard Library documentation to confirm.
+# Third-Party Library:
+# Modules or packages installed via package managers like pip (e.g., numpy, requests).
+# Typically found in the site-packages directory of your Python installation.
+
+# Feature
+# Standard Library
+# Third-Party Library
+# Comes with Python
+# Yes
+# No (must be installed with pip)
+# Found in Standard Docs
+# Yes (Python Standard Library)
+# No
+# Examples
+# os, sys, datetime, math
+# numpy, pandas, requests
+# Location in Python Path
+# /lib/pythonX.X (Standard folder)
+# /site-packages folder
+
+
+# Practice Exercises
+# Exercise 1: Indentation
+# Fix the indentation in this code
+def potatoes():
+    print("Potatoes!")
+    print("Boil 'em, mash 'em, put 'em in a stew")
+
+
+# Exercise 2: Line Length
+# Rewrite this line to respect the 79-character limit.
+# long_string = "This is an example of a very long string that goes well beyond" \
+# " the character limit."
+
+
+# # Exercise 3: Blank Lines
+# # Add the appropriate blank lines. 
+# class Example:
+#     def first_method(self):
+#         pass
+#     def second_method(self):
+#         pass
+
+# def function_a():
+#     print("It’s too cramped!")
+    
+# def function_b():
+#     print("I need some space!")
+
+#Day 6: Naming Conventions and Whitespace
+
+# Naming Conventions
+# Consistent naming conventions help others instantly understand your code. A good name communicates the purpose of a variable, function, or class without needing extra explanation.
+# Rules:
+# Variables and Functions:
+# Use snake_case: lowercase letters with underscores separating words.
+# Example: my_variable, calculate_sum().
+# Classes:
+# Use CapWords (PascalCase): Each word starts with a capital letter, no underscores.
+# Example: MyClass, UserAccount.
+# Constants:
+# Use ALL_CAPS: All letters uppercase with underscores separating words.
+# Example: MAX_LIMIT, TAX.
+# Why This Helps:
+# Makes it easy to distinguish between types of identifiers.
+# Ensures a consistent style that everyone can follow.
+
+
+
+# Whitespace
+# Whitespace makes your code visually organized and easier to read. Misplaced or inconsistent spaces can make code confusing and hard to follow.
+
+# Rules:
+# Add spaces around operators like +, -, *, = for clarity:
+# Example: result = (a + b) * (c - d) (Correct)
+# Avoid: result=(a+b)*(c-d) (Incorrect)
+# Avoid unnecessary spaces:
+# Inside parentheses, brackets, or braces:
+# Example: my_list = [1, 2, 3] (Correct)
+# Avoid: my_list = [ 1, 2, 3 ] (Incorrect)
+# Around keyword arguments:
+# Example: func(arg=42) (Correct)
+# Avoid: func(arg = 42) (Incorrect)
+# Tools:
+# Use a tool like Black Formatter in VSCode to automatically handle proper spacing.
+# Black formatter can be found in extensions
+
+
+
+
+# Practice Exercises
+# Exercise 1: Naming Conventions
+# Fix the naming in this code snippet and rewrite using proper naming conventions.
+# def CalculateSum(a, b):
+#     totalsum = a + b
+#     return totalsum
+
+
+# # Exercise 2: Whitespace
+# # Add the correct whitespace to this code.
+# result=(a + b ) * (c - d)
+# my_list = [1,2, 3]
+# print (result)
+
+# Day 6: Documentation and Comments
+
+# Why Documenting Your Code Matters
+# Good documentation clarifies what your code does, explains why decisions were 
+# made, and helps others (and your future self) quickly understand and 
+# modify your code.
+
+# Inline Comments
+# Purpose: Explain why something is done, not just what is happening.
+
+# Best Practices:
+# Keep them short and focused.
+# Place them above or next to the relevant line of code.
+# Avoid obvious comments like # Set value to 5.
+
+# Example:
+# # Initialize base value for calculations
+# value = 5
+
+
+
+# Docstrings
+# Purpose: Provide context for functions, classes, or modules.
+
+# Best Practices:
+# Explain what the function/class/module does.
+# List input parameters and their types.
+# Describe the return value and its type.
+
+# Here is an example of a Google style docstring:
+# def add_numbers(x, y):
+#     """
+#     Adds two numbers.
+
+#     Args:
+#         x (int): The first number.
+#         y (int): The second number.
+
+#     Returns:
+#         int: The sum of x and y.
+#     """
+#     return x + y
+
+
+
+# How to Set Up autoDocstring in VS Code
+# Step 1: Install autoDocstring
+
+# In VS Code go to the Extensions Marketplace (Ctrl+Shift+X or Cmd+Shift+X).
+# Search for "autoDocstring" and click Install.
+
+# Step 2: Configure for Google Style (optional)
+
+# The best style for docstrings largely depends on your team’s preferences, 
+# the project’s complexity, and the tools you’re using.
+
+# Why Use Google Style?
+# Google style is highly readable, even for beginners.
+# Many tools, including autoDocstring, Sphinx, and IDEs like PyCharm and VS Code,
+# support Google style.
+# Ideal for teams that use mixed environments or want consistent documentation.
+# Works well in Markdown-like outputs and renders cleanly in documentation 
+# generators like Sphinx.
+# The structure is intuitive and less verbose than NumPy style, making it easy 
+# for teams new to documentation to adopt.
+
+# Open your VS Code settings:
+# Navigate to File > Preferences > Settings (Windows/Linux)
+# Code > Preferences > Settings (Mac).
+# Search for autoDocstring.DocstringFormat.
+# Select google as the value
+
+# Practice Exercises
+# Exercise 1: Inline Comments
+# Write inline comments explaining why each step is performed in the following 
+# code:
+# def separate_fruits_and_veggies(items):# defining the function
+#     fruits = [] # blank list created 
+#     veggies = []
+#     for item in items: # iterate over the list
+#         name, category = item #parameters to be iterated over
+#         if category == 'fruit': # loop to check for item match
+#             fruits.append(name) # add to fruits list if item is found
+#         else:
+#             veggies.append(name) # if item not found in fruits list will 
+# add to
+#             # veggies list
+#     return fruits, veggies # return values
+
+
+# Exercise 2: Docstrings
+# Using the same code, write a docstring. Make sure it explains what the 
+# function does, lists parameter inputs and their types, and the return values 
+# and their types.
+
+#======================Day 6: Organization and Modularity ========================================================
+# Organizing and breaking down your code into manageable, modular pieces isn’t
+#  just about making it look nice—it’s crucial for usability, maintenance, and
+#  scalability. Clean and modular code is easier to debug, reuse, and share 
+# with others. Let’s dive into the principles that will help you write 
+# better-organized Python code.
+
+# Single Responsibility Principle (SRP)
+# Purpose: Ensure that each function or module does one thing and does it well.
+
+# Best Practices:
+# Avoid cramming everything into one function
+# Each function should do one thing
+
+# Non-SRP Example:
+# def make_sandwich(bread, fillings, condiments):
+#     # Gather ingredients
+#     ingredients = [bread]
+#     ingredients.extend(fillings)
+#     ingredients.extend(condiments)
+    
+#     # Assemble the sandwich
+#     sandwich = f"{ingredients[0]} with " + ", ".join(ingredients[1:])
+    
+#     # Serve the sandwich
+#     print(f"Here is your sandwich: {sandwich}")
+
+# bread = "Whole grain"
+# fillings = ["Turkey", "Cheese"]
+# condiments = ["Mayo", "Mustard"]
+# make_sandwich(bread, fillings, condiments)
+
+
+
+# SRP Example:
+# # Responsibility 1: Gather ingredients
+# def gather_ingredients(bread, fillings, condiments):
+#     ingredients = [bread]  # Start with the bread
+#     ingredients.extend(fillings)  # Add all fillings
+#     ingredients.extend(condiments)  # Add all condiments
+#     return ingredients
+
+# # Responsibility 2: Assemble the sandwich
+# def assemble_sandwich(ingredients):
+#     sandwich = f"{ingredients[0]} with " + ", ".join(ingredients[1:])
+#     return sandwich
+
+# # Responsibility 3: Serve the sandwich
+# def serve_sandwich(sandwich):
+#     print(f"Here is your sandwich: {sandwich}")
+
+# # Main function that coordinates the process
+# def make_sandwich(bread, fillings, condiments):
+#     # Pass the ingredients as arguments
+#     ingredients = gather_ingredients(bread, fillings, condiments)
+#     sandwich = assemble_sandwich(ingredients)
+#     serve_sandwich(sandwich)
+
+# bread = "Whole grain"
+# fillings = ["Turkey", "Cheese"]
+# condiments = ["Mayo", "Mustard"]
+
+# # Call the main function
+# make_sandwich(bread, fillings, condiments)
+
+
+
+# Keep Functions Short
+# Purpose: Improve readability and ease of debugging.
+
+# Best Practices:
+# If a function exceeds 20 lines, think about how to break it into smaller, 
+# focused functions.
+
+# Group Related Functions and Constants
+# Purpose:  Keep your code logical and easy to navigate.
+# Group file-related operations in one file/module (e.g., file_operations.py).
+# Keep constants for file paths or settings together in a constants.py file.
+
+# constants.py example:
+# TAX = 0.12  # Default Tax Amount
+
+# # Error Messages
+# ERROR_ITEM_NOT_FOUND = "Error: Item not found in inventory."
+# ERROR_INVALID_QUANTITY = "Error: Invalid quantity provided."
+
+# # Application Metadata
+# APP_NAME = "Grocery List App"
+# VERSION = "1.0.0"
+# AUTHOR = "Skyler Fines"
+
+# # Categories (for grouping items)
+# CATEGORIES = ["Fruits", "Vegetables", "Dairy", "Meat", "Beverages"]
+
+# # Inventory Defaults
+# DEFAULT_RESTOCK_QUANTITY = 10  # Amount to restock when items are low
+# DEFAULT_ITEMS = {
+#     "apples": 10,
+#     "bananas": 8,
+#     "oranges": 2,
+# }
+
+
+# Use a Top-Down Approach
+# Purpose: Help readers understand the high-level structure before diving 
+# into details.
+# Place the main logic at the top of the script and helper functions below.
+
+# Main Functions: These functions orchestrate the overall logic of the program.
+#  They call helper functions to perform specific tasks, handle the program's
+#  flow, and interact with the user (e.g., getting input or displaying output).
+
+# Helper Functions: These are smaller, modular functions designed to perform 
+# specific, often repetitive, tasks. They "help" the main functions by 
+# handling the details of certain operations, making the main function cleaner
+#  and easier to read.
+
+# # Main function
+# def manage_shopping_cart():
+#     """Main function to manage the shopping cart."""
+#     items = ["Banana", "Apple", "Carrot"]
+#     prices = [0.99, 1.49, 0.79]
+    
+#     sorted_items = sort_list(items)  # Calls helper function
+#     total_cost = calculate_total_cost(prices)  # Calls helper function
+    
+#     print("Shopping Cart:")
+#     for item, price in zip(sorted_items, prices):
+#         print(f"{item}: ${price:.2f}")
+#     print(f"Total Cost: ${total_cost:.2f}")
+
+# # Helper functions
+# def sort_list(items):
+#     """Sort a list of items."""
+#     return sorted(items)
+
+# def calculate_total_cost(prices):
+#     """Calculate the total cost of items."""
+#     return sum(prices)
+
+# # Run the main function
+# manage_shopping_cart()
+
+# Tip: ZIP
+
+
+# Example:
+# # Two lists to zip
+# list1 = [1, 2, 3]
+# list2 = ['a', 'b', 'c']
+
+# # Using zip
+# zipped = zip(list1, list2)
+
+# # Converting the result to a list
+# print(list(zipped))
+
+
+# Expected Output:
+# [(1, 'a'), (2, 'b'), (3, 'c')]
+
+
+
+# Encapsulate Data and Methods in Classes
+# Purpose:  Bundle related data and methods to improve modularity and 
+# organization.
+# We will explore classes and methods further into the course.
+
+# Example:
+# class GroceryList:
+#     def __init__(self):
+#         """Initialize an empty grocery list."""
+#         self.items = []  # Data: A list to store grocery items
+
+#     def add_item(self, item):
+#         """Add an item to the grocery list."""
+#         pass
+
+#     def remove_item(self, item):
+#         """Remove an item from the grocery list if it exists."""
+#         pass
+
+#     def edit_item(self, old_item, new_item):
+#         """Edit an item in the grocery list."""
+#         pass
+
+#     def list_items(self):
+#         """Display all items in the grocery list."""
+#         pass
+
+
+# *Note: Here we are only using pass in these methods to so it is easier to 
+# see the big picture
+
+
+# Practice Exercises
+# Practice Code:
+# def make_taco():
+#     # Choose the taco type
+#     taco_type = input("What kind of taco are you making? 
+# (e.g., Chicken, Beef, Veggie): ")
+    
+#     # Gather ingredients
+#     ingredients = []
+#     while True:
+#         ingredient = input("Enter an ingredient (or 'done' to stop): ")
+#         if ingredient.lower() == 'done':
+#             break
+#         ingredients.append(ingredient)
+    
+#     # Assemble and display the taco
+#     print(f"\nAssembling your {taco_type} taco with the following 
+# ingredients:")
+#     for ingredient in ingredients:
+#         print(f"- {ingredient}")
+#     print(f"\nYour {taco_type} taco is ready! Enjoy!")
+
+# make_taco()
+
+
+# Exercise 1: Break Down the Function (SRP)
+# Refactor the make_taco function into three smaller functions:
+# A function to choose the taco type.
+# A function to gather ingredients.
+# A function to assemble and display the taco.
+
+# Suggested tasks:
+# A function for adding items to the list.
+# A function for calculating the total cost.
+# A function for printing the grocery list and total cost.
+
+# Exercise 2: Use a Helper Function
+# Create a helper function to format the ingredient strings (e.g., "- Beef").
+#  Use this helper function inside the taco assembly function. 
+
+# Example:
+# def format_ingredient(ingredient):
+#     new_ingredient = f"- {ingredient}"
+#     return new_ingredient
+
+
+# Exercise 3: Top Down Approach
+# Organize your code so the main functions are at the top and helper functions
+#  are at the bottom.
+
+# Exercise 4: Grouping Related Functions
+# Create a new module called taco_maker.py and add your code in here. This way
+#  only taco making code lives here. 
+
+# Exercise 5: Apply PEP 8
+# Apply PEP 8 rules to the taco_maker module. Add in-line comments and a 
+# docstring.
+
+
+
+# Exercise 6: BONUS - ZIP
+# You are making tacos, and you have two lists:
+# A list of toppings for the taco (e.g., "Lettuce", "Cheese", "Salsa").
+# A list of quantities for each topping (e.g., "1 cup", "1/2 cup", "2 tbsp").
+# Change these values to your own preferences
+
+# Write a function using zip to combine these two lists into a single list of 
+# strings, where each string describes a topping and its quantity. 
+# Finally, print each topping and its quantity.
+# Hint: for topping, quantity in toppings_with_quantities:
+
+# Example Input:
+# toppings = ["Lettuce", "Cheese", "Salsa"]
+# quantities = ["1 cup", "1/2 cup", "2 tbsp"]
+
+
+# Example Output:
+# - Lettuce: 1 cup
+# - Cheese: 1/2 cup
+# - Salsa: 2 tbsp
+
+#Day 6: Error Handling with LBYL and EAFP
+# Errors can cause your program to crash, frustrating users and disrupting workflows. Proper error handling ensures your program can deal with unexpected situations gracefully.
+
+# Look Before You Leap (LBYL)
+# This approach involves checking conditions before performing an operation.
+
+# When to Use LBYL:
+# When pre-checking is quick and straightforward.
+# To prevent predictable errors like accessing an item in a grocery list dictionary that might not exist.
+
+# Example:
+# grocery_list = {"apples": 5, "bananas": 3, "milk": 2}
+
+# # LBYL approach
+# if "eggs" in grocery_list:
+#     print(f"Eggs: {grocery_list['eggs']} units")
+# else:
+#     print("Error: 'eggs' not found in the grocery list.")
+
+
+
+# Easier to Ask for Forgiveness than Permission (EAFP)
+# This approach skips pre-checks and handles errors if they occur.
+
+# When to Use EAFP:
+# When errors are rare or unpredictable.
+# When working with uncertain operations, like fetching an item from the grocery list.
+
+# Example:
+# grocery_list = {"apples": 5, "bananas": 3, "milk": 2}
+
+# # EAFP approach
+# try:
+#     print(f"Eggs: {grocery_list['eggs']} units")
+# except KeyError:
+#     print("Error: 'eggs' not found in the grocery list.")
+
+# # Call the main function
+# make_sandwich(bread, fillings, condiments)
+
+
+# LBYL and EAFP
+# LBYL:
+# Proactive: Checks before acting.
+# Ideal for predictable scenarios.
+# Provides more control over your code and looks more professional.
+# EAFP:
+# Reactive: Acts first and handles issues if they arise.
+# Useful for scenarios with rare or unpredictable errors.
+# Allows for flexibility when testing new code
+
+
+# Practice Exercises
+# grocery_list = {"bread": 4.50, "cheese": 12.47, "yogurt": 3.99}
+
+
+# Exercise 1: LBYL and EAFP
+# Given the above grocery list:
+# Write a script that gets the value of “butter”. 
+# This will raise a KeyError since “butter” is not in the dictionary.
+# Solve the KeyError using LBYL
+# Solve the KeyError using EAFP
+
+#==========================================================
+
+
+#Day 6: Multi-Line Text, Comments, and F-Strings
+# Understanding how to manage multi-line text, comments, and complex 
+# expressions is essential for writing clean, readable, and maintainable Python 
+# code. Long lines of code or text can quickly become unwieldy, leading to bugs 
+# and confusion. By mastering these concepts, you’ll learn how to organize your
+#  code effectively—an invaluable skill for any developer.
+# Let’s break this down step by step with practical examples to guide you along
+#  the way!
+
+# Multi-Line Strings
+# When dealing with long pieces of text, Python provides two simple methods to
+#  keep everything tidy: parentheses and triple quotes.
+
+# Using Parentheses
+# If you’re working with a long string, you can wrap it in parentheses to split
+#  it across multiple lines without introducing syntax errors.
+
+# Example:
+# long_string = (
+#     "If we put out text in parenthesis"
+#     "We can write multi-line strings"
+#     "This saves us space and keeps things clean"
+# )
+# print(long_string)
+
+
+# Output:
+# If we put out text in parenthesisWe can write multi-line stringsThis saves 
+# us space and keeps things clean
+
+# When using parenthesis, if we want the text to appear on separate lines like
+#  it is displayed instead of on one line, we need to explicitly use the escape
+#  sequence \n
+
+# Example with Escape Sequence:
+# long_string = (
+#     "If we put out text in parenthesis\n"
+#     "We can write multi-line strings\n"
+#     "This saves us space and keeps things clean\n"
+# )
+# print(long_string)
+
+
+
+
+# Output:
+# If we put out text in parenthesis
+# We can write multi-line strings
+# This saves us space and keeps things clean
+
+
+# Using Triple Quotes
+# For text that needs to maintain its exact formatting, triple quotes are your
+#  go-to.
+
+# Example:
+# long_string = """
+# Triple quotes give us more control:
+# 1. The text output will appear as is
+# 2. This makes it more predictable
+# 3. Making it easier to maintain formatting
+# """
+# print(long_string)
+
+
+# Output:
+# Triple quotes give us more control: 
+# 1. The text output will appear as is
+# 2. This makes it more predictable   
+# 3. Making it easier to maintain formatting
+
+
+
+# Multi-Line Function Calls
+# When working with functions that take several parameters, it’s best to place
+#  each argument on a new line to improve readability.
+
+# Example:
+# # Long Function Call
+# add_item(name="Kiwis", store="Costco", cost=10.50, amount=2, priority=2,
+#  buy=True)
+
+# # Multi-Line Function Call
+# add_item(
+#     name="Kiwis",
+#     store="Costco",
+#     cost=10.50,
+#     amount=2,
+#     priority=2,
+#     buy=True
+#     )
+
+
+# This structure makes it easier to scan and debug functions, especially 
+# when the arguments are complex.
+
+
+
+
+
+
+# Multi-Line Data Structures
+# Large data structures like lists, dictionaries, and sets benefit from being 
+# split across lines.
+
+# Lists
+# # Long List
+# grocery_items = ["Apples", "Bananas", "Carrots", "Dates", "Eggplants", 
+# "Potatoes", "Chocolate", "Cake"]
+
+# # Multi-Line List
+# grocery_items = [
+#     "Apples",
+#     "Bananas",
+#     "Carrots",
+#     "Dates",
+#     "Eggplants",
+#     "Potatoes",
+#     "Chocolate",
+#     "Cake"
+#     ]
+
+
+# Dictionaries
+# # Long Dictionary 
+# grocery_item = {"name": "chicken", "store": "Walmart", "cost": 12.57, 
+# "amount": 2, "priority": 1, "buy": True}
+
+# # Multi-Line Dictionary 
+# grocery_item = {
+#     "name": "chicken",
+#     "store": "Walmart",
+#     "cost": 12.57,
+#     "amount": 2,
+#     "priority": 1,
+#     "buy": True
+#     }
+
+
+
+
+
+# Multi-Line Comments
+# Triple quotes are often used as a workaround for multi-line comments. 
+# Though they are technically multi-line strings, Python ignores them if they 
+# are not assigned to a variable.
+
+# Example:
+# """
+# This is a multi-line comment.
+# It spans several lines.
+# Use triple quotes for this purpose.
+# """
+# print("Code runs normally.")
+
+# These are also often used as module docstrings
+
+# Note: If placed inside a function or class, triple quotes are interpreted 
+# as docstrings and not comments.
+
+# Another way is to use the # symbol on each line of the comment. This 
+# approach is explicit and avoids confusion.
+
+# # This is a multi-line comment.
+# # It uses the # symbol for each line.
+# # This method is more explicit.
+
+# print("Code runs normally.")
+
+
+# Which Method Should You Use?
+# Use triple quotes if the comment is long and spans multiple lines, and it 
+# won’t be confused with a docstring (e.g., outside of functions or classes).
+# Use # for shorter or standard multi-line comments, as it’s explicit and 
+# fits Python’s conventions.✅
+# Module Docstrings
+# A module docstring is a special kind of docstring that appears at the very 
+# top of a Python file. It provides a high-level overview of the module's 
+# purpose, functionality, and any additional information helpful for users or 
+# developers working with the module.
+
+# Why Use Module Docstrings?
+# To explain what the module does.
+# To document the module's functionality and usage.
+# To provide metadata, such as author information, version, or licensing.
+
+# How to Write a Module Docstring
+# Place the docstring as the very first statement in the Python file 
+# (before imports or code).
+# Use triple quotes (""" or ''') to enclose the docstring.
+# Include concise but informative details.
+
+# Example:
+# """
+# grocery_list_core.py
+
+# This module provides the core functionality of the app.
+# It includes features for adding, removing, and editing items.
+
+# Functions:
+# - add_item(): Adds an item to the list.
+# - remove_item(): Removes an item from the list.
+# - edit_item: Edit an existing item from the list.
+
+# Author: Skyler Fines
+# Version: 1.0.0
+# """
+
+
+
+# Practice Exercises
+# Exercise 1: Multi-Line String
+# Write three things about yourself in a string variable called about_me.
+# Copy the variable and break it into three lines using parenthesis
+# Copy the variable and break it into three lines using triple quotes
+# Both outputs should look the same
+# Example:
+# "I work in QA, I love hiking, and I have a pet cat."
+
+
+# Exercise 2: Multi-Line Function Call
+# The following function call is too long and does not comply with PEP 8 
+# guidelines because of its length. 
+# Rewrite it by placing each parameter on a new line.
+# add_bee_hive(beekeeper_name="Alice", location="North Field", 
+# hive_capacity=50, bee_species="Apis mellifera", honey_production_rate=20.5,
+#  hive_health="Good", queen_present=True, last_inspection="2024-11-20", 
+# notes="Hive thriving with high activity")
+
+
+# Exercise 3: Multi-Line Data Structures
+# You are given a dictionary with 10 stores and their inventory numbers 
+# written as a single line.
+# Rewrite it so each store and its inventory count is on a new line for 
+# better readability.
+# stores = {"Store A": 120, "Store B": 340, "Store C": 275, "Store D": 420,
+#  "Store E": 310, "Store F": 95, "Store G": 240, "Store H": 180, 
+# "Store I": 60, "Store J": 410}
+
+
+
+
+# Exercise 4: Module Docstring
+# You’re creating a Python module for a Bee Keeper Management App. Write 
+# a module docstring based on the following details:
+# Name: bee_keeper_manager.py
+# Purpose: To help beekeepers manage their hives, track honey production,
+#  and monitor hive health.
+# Features:
+# Add new hives.
+# Update hive health status.
+# Track honey production rates.
+# Generate hive activity reports.
+# Author: Buzz McComb
+# Version: 2.1
+
+#====================================================================================
+
+# Day 6: Avoiding Global Variables and Using Constants
+# Understanding how to manage variables effectively is crucial for writing reliable, maintainable, and scalable code. Global variables, while convenient, can work unpredictability and make debugging difficult. This document will guide you through the importance of avoiding global variables and how to use constants effectively to enhance code clarity and maintainability. By the end, you'll have a solid understanding of these concepts and practical exercises to reinforce them.
+
+# Why Avoid Global Variables?
+# Global variables are accessible from anywhere in your code. While this might seem helpful, it creates challenges:
+# Harder Debugging: Tracking where a global variable was changed can be difficult, especially in larger projects.
+# Unpredictable Behavior: Global variables can be unintentionally modified by different parts of the program, leading to bugs.
+# Reduced Code Readability: It’s harder to understand the scope and purpose of global variables.
+
+
+
+# Best Practices
+# Pass Variables as Arguments
+# Instead of relying on global variables, pass the required values directly to functions.
+
+# Example:
+# def multiply_by_two(num):
+#     return num * 2
+
+# # Instead of number being a global variable
+# # We assign it here
+# number = 10
+# result = multiply_by_two(number)
+# print(result)  # Output: 20
+
+
+# Encapsulate Variables in Functions or Classes
+# Keep variables local to their specific function or class to limit their scope.
+
+# Example:
+# def calculate_area(length, width):
+#     area = length * width  # 'area' is local to this function
+#     return area
+
+# length = 5
+# width = 10
+# result = calculate_area(length, width)
+# print(result)  # Output: 50
+
+
+
+
+
+# Using Constants
+# We have already touched on constants and earlier modules, but this might be a good review.
+
+# Constants are variables that should not change throughout the program. Python uses a naming convention of ALL_CAPS to identify constants.
+# Benefits:
+# Enhances code readability.
+# Makes updates easier (change in one place updates all references).
+# Reduces hardcoding and duplication.
+
+# Example:
+# MAX_CONNECTIONS = 5 # ALL CAPS shows the reader these values will not change
+# TIMEOUT_DURATION = 30
+
+# def connect():
+#     for i in range(MAX_CONNECTIONS):
+#         print("Connecting...")
+
+
+# Constants should always be found at the top of the file
+
+#=============================================================
+
+# Day 6: Type Hints and Annotations
+# Type hints are a valuable addition to Python that make code easier to understand, maintain, and debug. In this module, you’ll learn how to use type hints and annotations effectively to improve your code’s clarity and quality.
+
+# What Are Type Hints?
+# Type hints allow you to specify the expected types of arguments, return values, and variables in your code.
+# They don’t enforce type rules at runtime but serve as helpful guides for developers and tools like linters.
+# A linter is a tool that analyzes your code for potential errors, stylistic inconsistencies, and violations of coding standards. 
+# Introduced in Python 3.5, they are not supported in older Python versions.
+
+
+
+# Function Annotations
+# Function annotations let you define the types of inputs and outputs for functions.
+# Type hints are part of function annotations, specifically used for defining the types of arguments and return values.
+# Function annotations can also serve other purposes but are most commonly used for type hints.
+
+# Function Annotation Example:
+# def add(x: int, y: int) -> int:
+#     return x + y
+
+
+# Function Annotation vs Type Hints
+# When we are throwing around terms like type hints and function annotations their definitions and usage can sound the same. Let’s clear that up:
+
+# Function Annotation:
+# In Python, any metadata attached to a function’s parameters or return value using the : or -> syntax is a function annotation.
+# In this case, x: int, y: int, and -> int are function annotations because they describe additional information about the function.
+
+# Type Hint:
+# The specific information provided by the annotations (int for x and y, and int for the return type) is a type hint.
+# Type hints are a specific use case of function annotations, indicating the types of inputs and outputs expected for the function.
+
+
+
+
+
+# Function Annotations VS Type Hints
+# You can use : and -> in function annotations for purposes other than type hints by attaching arbitrary metadata to function parameters and return values.
+
+# When Would You Do This? (IF YOU’RE CURIOUS)
+# To add contextual information about parameters or return values directly in the code, especially when generating auto-documentation.
+# Generating auto-documentation means using tools to automatically extract and organize information from your codebase to create comprehensive, human-readable documentation.
+# Tools like sphinx, pdoc, Doxygen, Pydoctor
+# If you have a custom tool or decorator that interprets these annotations to validate inputs dynamically. (We’ll learn about decorators later)
+
+# Example (function annotation that is not a type hint):
+# def save_file(file_path: "Must be a valid file path"):
+#     pass
+
+
+# For specialized applications, such as scientific computing, where annotations could describe units, ranges, or assumptions.
+
+# Example (function annotation using descriptive metadata):
+# def convert_temperature(temp: "Celsius value", target_unit: "Fahrenheit or Kelvin") -> "Converted temperature":
+#     return temp * 9/5 + 32 if target_unit == "Fahrenheit" else temp + 273.15
+
+
+# Frameworks like Flask or Django could use function annotations to register routes or describe APIs.
+
+
+# Variable Type Hints
+# Type hints can also be used with variables to specify the type of data they should hold.
+# name: str = 'Python'
+# age: int = 33
+# is_active: bool = True
+
+
+# name is expected to be a string, age an integer, and is_active a boolean.
+
+# Benefits of Type Hints
+# Improves Code Readability: Makes it clear what types are expected without extra comments.
+# Helps Catch Errors Early: Tools like mypy can detect mismatches during development.
+# Supports Collaboration: Makes it easier for others to understand and work with your code.
+
+# Limitations
+# Type hints are not enforced by Python at runtime.
+# Older Python versions (before 3.5) don’t support type hints, so consider compatibility if you’re working in a shared or legacy environment.
+
+
+# Complex Variable Type Hints
+# Some type hints might be a bit more complex than a single type. Let’s use our grocery list variable for example:
+
+
+# Here we have a list
+# Within that list there are dictionaries
+# Within each dictionaries there are more variable types
+# grocery_list = [
+#     {"name": "milk", "store": "Walmart", "cost": 6.47, "amount": 2, "priority": 1, "buy": True},
+#     {"name": "bread", "store": "Walmart", "cost": 4.50, "amount": 2, "priority": 1, "buy": True}
+# ]
+
+
+# Here we can specify the list with the list type then square brackets [ ]
+# Then we specify that the elements of the list are dictionaries dict[ ]
+# Each dictionary has:
+# Key Type: str (keys are strings).
+# Value Type: A union of float, int, str, and bool (values can be any of these types).
+# grocery_list: list[dict[str, float | int | str | bool]] = [
+#     {"name": "milk", "store": "Walmart", "cost": 6.47, "amount": 2, "priority": 1, "buy": True},
+#     {"name": "bread", "store": "Walmart", "cost": 4.50, "amount": 2, "priority": 1, "buy": True}
+# ]
+
+# Note that you don't specify the type for each individual key (e.g., name, store). Instead, the type hint applies once to all keys and once to all values in the dictionary.
+
+# So the type hint looks like this:
+# grocery_list: list[dict[str, float | int | str | bool]]
+
+
+
+# Also note that the syntax for complex type hints can be slightly different based on the python version.
+
+# For example python 3.9 or earlier doesn’t support the | operator. 
+
+# For Python 3.10+: list[dict[str, float | int | str | bool]]
+# For Python < 3.10: List[Dict[str, Union[float, int, str, bool]]]
+
+# Practice Exercises
+# Exercise 1: Add Type Hints to a Function
+# Update the following function to include type hints for the parameters and the return value.
+# Hint: The parameter name should be a string, and the function should return a string.
+
+# Function:
+# def apples(apple_type):
+#     return f"I love, {apple_type} apples!"
+
+
+# Exercise 2: Use Type Hints for Variables
+# Rewrite the code below to include type hints for the variables.
+# Hint: Use str for title, int for years_experience, and bool for is_remote.
+
+# Variables:
+# title = "Python Developer"
+# years_experience = 10
+# is_remote = True
+
+
+# Exercise 3: Annotate a Math Function
+# Add type hints to this function, which calculates the area of a rectangle.
+# Hint: length and width should be float, and the return value should also be float.
+
+# Function:
+# def calculate_area(length, width):
+#     return length * width
+
+
+
+
+
+
+
+
+
+
+
 
 
 
