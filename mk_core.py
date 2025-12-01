@@ -16,37 +16,39 @@ Version:1.2.0
 # The grocery_list is a list of items showing the keywords and values of each.
 # Also this shows the type of item within the list ex: "name" is a string,
 # cost is a float, priority is an integer and buy is a boolean.-True or False.
+
+import uuid
+
+# To generate a unique id on existing list
+# for i in range(2):
+#     unique_id = int(uuid.uuid4())
+#     print(unique_id)
+
+
 grocery_list: list[dict[str, float | int | bool | str]] = [
     {
-        "name": "milk",
+        "name": "Milk",
         "store": "Walmart",
         "cost": 6.47,
         "amount": 2,
         "priority": 1,
         "buy": True,
+        "id": 279867738712164953486078660868091747138
     },
     {
-        "name": "bread",
-        "store": "Wal-Mart",
-        "cost": 4.50,
-        "amount": 2,
-        "priority": 1,
-        "buy": True,
-
-    },
-    {"name": "eggs",
-        "store": "Wal-Mart",
-        "cost": 5.0,
+        "name": "Chese",
+        "store": "Walmart",
+        "cost": 2.50,
         "amount": 1,
         "priority": 1,
         "buy": True,
+        "id":115729385036103459303260851747783958910
+        
     },
-    
 ]
 
 #Global variable
 TAX = 0.08
-
 
 def add_item(
         name: str,
@@ -67,6 +69,7 @@ def add_item(
         priority (int): an integer
         buy (bool): a boolean
     """
+    unique_id = int(uuid.uuid4())
     
     item = {
         "name": name, 
@@ -74,44 +77,49 @@ def add_item(
         "cost": cost, 
         "amount": amount, 
         "priority": priority, 
-        "buy": buy
+        "buy": buy,
+        "id": unique_id
     }
+
     grocery_list.append(item)
 
-def remove_item(name):
+def remove_item(id: int) -> None:
+    
     """This is a function to remove items
         from the list as a string.
 
     Args:
-        name (str): string
+        id (int): the assigned id for the item
 
     Returns:
         str: _return item as a string
     """
-
-    index = get_index_from_name(name)
+    
+    index = get_index_from_id(id)
     grocery_list.pop(index)
 
 def edit_item(
-    name, store=None, 
-    cost=None, 
-    amount=None, 
-    priority=None,
-    buy=None
+    name: str,
+    store: str | None=None, 
+    cost: float | None=None, 
+    amount: int | None=None, 
+    priority: int | None=None,
+    buy: str | bool="skip", 
+    id: int | None = None,
 ):
     """This is  function the allows the user to edit the items in a list.
 
     Args:
-        name (str):The name of the store to edit
+        name (str):The name of the item edit
         store (str): Updated staore name. Defaults to none.
         cost (float):Updated cost. Defaults to None.
         amount (int): Updated amount. Defaults to None.
         priority (int): Updated priority. Defaults to None.
         buy (bool): Updated buy status. Defaults to "skip"
+        id (str:) Updated id.
     """
     
-    index = get_index_from_name(name)
-
+    index = get_index_from_name(id)
     old_item = grocery_list[index]
     
     if not store:
@@ -126,8 +134,11 @@ def edit_item(
     if not priority:
         priority = old_item["priority"]
 
-    if not buy:
+    if buy == "skip":
         buy = old_item["buy"]
+
+    if not id:
+        id = old_item["id"]
 
     item = {
         "name": name, 
@@ -135,8 +146,9 @@ def edit_item(
         "cost": cost, 
         "amount": amount, 
         "priority": priority, 
-        "buy": True
-}
+        "buy": buy,
+        "id": id
+        }
 
     grocery_list[index] = item
    
@@ -146,7 +158,6 @@ def export_items():
 been edited, removed or  added to the list, 
 creating a new list called the buy_list.
     """
-
     for item in grocery_list:
         if item["buy"]:
             buy_list.append(item)
@@ -154,20 +165,25 @@ creating a new list called the buy_list.
         if buy_list:
             for item in buy_list:
                 print(
-                f"name:{item['name']} -"
-                f"store:{item['store']} -"
-                f"cost: ${item['cost']} -"
-                f"amount: {item['amount']} -"
-                f"priority: {item['priority']}"
-                )
-            
+                    f"name:{item['name']} -store:{item['store']} -"
+                    f"cost: ${item['cost']} -amount: {item['amount']} -"
+                    f"priority: {item['priority']}")
+                
         total_cost = calculate_total_cost(buy_list, round_cost=True)
-
+                
         print(f"The total cost is ${total_cost}")
 
-       
+def get_index_from_id(id):
+    index = 0
+    for item in grocery_list:
+        if item["id"] == id:
+            return index
+        else:
+            index += 1
+
 def get_index_from_name(name):
     index = 0
+    
     """_The get_index_from_name(name) function 
 will return the name of the item.
 
@@ -216,7 +232,7 @@ def calculate_total_cost(grocery_list, round_cost=False):
 
     return total_cost
 
-# export_items()
+    export_items()
 
 
 
