@@ -31,8 +31,10 @@ def launch():
             # items in the list.
             print("This allows you to edit any item on yoiur shopping list.")
             name, store, cost, amount, priority, buy=get_inputs()
-
-            mk_core.edit_item(name, store, cost, amount, priority, buy)
+            index = mk_core.get_index_from_name(name)
+            item = mk_core.grocery_list[index]
+            id = item["id"]
+            mk_core.edit_item(name, store, cost, amount, priority, buy, id)
             print(f"{name} was edited.")
 
 
@@ -53,6 +55,7 @@ def launch():
 def get_inputs():
         """The following functions are for the inputs
     to collect information for the list.
+export
 
         Returns:
             string:  item to be added as a string

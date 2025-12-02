@@ -2601,6 +2601,1223 @@ def potatoes():
 # def calculate_area(length, width):
 #     return length * width
 
+#================Day 7 Libraries===================================
+
+# Day 7: Getting Started with Libraries
+
+# Definition: Libraries are collections of pre-written code that can be used to 
+# add specific functionalities to programs. They save time and effort by 
+# leveraging the expertise of other developers.
+
+# Key Concepts:
+# Standard Libraries: Bundled with Python and ready to use. 
+# Examples: math, os, datetime.
+# Third-Party Libraries:  Created by developers worldwide, hosted on PyPI. 
+# 	Examples: NumPy, Pandas, Flask.
+# Benefits of Libraries
+# Efficiency: Reuse pre-written code for faster development.
+# Reliability: Built on tested solutions, making your programs more robust.
+# Learning Opportunity: Learn coding best practices from experienced developers.
+# Collaboration: Libraries reflect the collective knowledge of the Python 
+# community.
+
+# Installing Third Party Libraries
+# Use pip (Python’s package manager) to install third-party libraries
+# pip install <library_name>
+# # Example:
+# pip install numpy
+
+
+# Syntax
+# # Use the ‘import’ keyword to load a library into your program
+# import <library name>
+
+# # Example
+# import math
+
+
+# Example Usage
+# Find the library that you need by looking up the documentation from the 
+# official python website or the python library index:
+# The Python Standard Library — Python 3.13.1 documentation
+# PyPI · The Python Package Index
+# Example function: print the square root of 64
+# 	Step 1: Look for the  math library in any of the resources above. 
+# You should find this: https://docs.python.org/3/library/math.html
+# 	Step 2: Find the function that will allow you to get the square 
+# root of a number and call that function:
+# import math
+
+# def get_square_root(number):
+#     """
+#     Calculate and print the square root of a given number.
+#     Args:
+#         number (float or int): The number to calculate the square    root of.
+#     Returns:
+#         None: This function prints the result directly.
+#     """
+#     square_root = math.sqrt(number)
+#     print(f"The square root of {number} is {square_root}")
+
+# number = 64
+# get_square_root(number)
+
+# # Result
+# The square root of 64 is 8 
+
+# Practice Exercises
+# BASIC IMPORT: Use the math library to calculate the area of a circle.
+
+# Write a function that takes the radius of the circle as an input and 
+# calculate the area..
+# Hint: Use math.pi and the formula area = pi * radius^2.
+
+# INSTALL AND USE A THIRD-PARTY LIBRARY:
+# Install the requests library using pip
+# Write a function that fetches and prints data from the following 
+# API: https://api.github.com
+# Import the requests library
+# Use the .get function in requests to grab the data from the api
+# response = requests.get('https://api.github.com')
+# Use .text to print the response. The result you get should be the same as 
+# what you see in https://api.github.com.
+# print(response.text)
+
+# Write two functions that gets the factorial of a number: 
+# https://www.mathsisfun.com/numbers/factorial.html
+# Write a custom function that calculates the factorial of a number without
+# using libraries
+# Write a function that does the same thing but uses the math library
+
+# Day 7: Common Standard Libraries
+
+# Why Are These Libraries Popular?
+# Python is loved for its simplicity and versatility, thanks to its massive ecosystem of libraries. 
+# These standard libraries are common because they solve everyday problems efficiently, from file handling and text manipulation to working with numbers, dates, and even web data.
+# Learning these libraries will help you write cleaner, faster, and more powerful code for real-world projects.
+
+
+
+# os – Operating System Interactions
+# The os library lets you work with files, directories, and system commands
+# Example:
+# import os  
+# print(os.getcwd())  # Prints the current working directory  
+# os.mkdir("new_folder")  # Creates a new folder 
+
+# This code will print out the your current directory then create a new folder in that directory
+# os documentation
+
+# sys – Python Runtime Settings
+# The sys library allows you to interact with the Python environment.
+# Example:
+# import sys  
+# print(sys.version)  # Prints the Python version
+# print(sys.path) # Prints directories in the system path
+
+# This code prints the current python version
+# Then it shows the list of directories where the Python interpreter looks for modules and packages when you try to import them
+# sys documentation
+
+
+# json – Working with JSON Data
+# json helps you read, write, and manipulate JSON files, a popular data format for the web.
+# Example:
+# import json  
+# # A dictionary expressed as a string
+# data = '{"name": "apple", "cost": 3.75}'
+# parsed_data = json.loads(data)  # Converts string to dictionary  
+# print(parsed_data["name"])
+
+# This code takes a dictionary that is wrapped in a string
+# Typically how JSON data is stored
+# Then we convert the string to a dictionary and print the name value
+# Just like we would with a regular dictionary
+# Json documentation
+
+# datetime – Dates and Times
+# The datetime library allows you to work with dates, times, and durations.
+# Example:
+# from datetime import datetime  
+# now = datetime.now()  # Current date and time  
+# print("Current time:", now) 
+
+# This code prints the current data and time
+# datetime documentation
+
+
+
+# math – Mathematical Operations
+# math provides useful math functions like square roots, trigonometry, and logarithms.
+# Example:
+# import math  
+# print(math.sqrt(16))  # Square root of 16  
+# print(math.pi)  # Value of pi 
+
+# This code is a simple example of creating the square root of 16 and printing the value of pi using functions from the math library
+# math documentation 
+
+# random – Random Number Generation
+# The random library lets you generate random numbers, useful for games or simulations.
+# Example:
+# import random  
+# print(random.randint(1, 10))  # Random number between 1 and 10 
+
+# This code prints a random number between 1 and 10 
+# This can be super useful for many programs, and anything that requires randomness
+
+# random documentation
+
+
+
+# re – Pattern Matching with Regular Expressions
+# The re library helps search and manipulate text using patterns.
+# Example:
+# import re  
+# text = "my favorite food is fav_food"  
+# result = re.sub("fav_food", "sushi", text)  
+# print(result)
+
+# This code uses the re library to substitute fav_food with sushi
+# We will dive deeper into regex shortly
+
+# re documentation
+
+# urllib – Web Requests
+# The urllib library helps you interact with web data or download content.
+# Example:
+# from urllib import request  
+# response = request.urlopen("http://example.com")  
+# print(response.read())  # Reads and prints the website content 
+
+# This code reads and prints the contents from the given website
+
+# urllib documentation
+
+
+
+
+# collections – Advanced Data Structures
+# The collections library offers tools like deque and Counter to simplify code.
+# Example:
+# from collections import Counter  
+# fruits = ["apple", "banana", "apple", "orange"]  
+# print(Counter(fruits))  # Counts occurrences of each fruit 
+
+# This code returns a counter object containing the number of occurrences for each fruit and the prints the counter object
+# We we learn more about “objects” later
+
+# collections documentation
+
+# itertools – Efficient Iteration
+# itertools provides tools for looping and creating combinations or permutations.
+# Example:
+# from itertools import permutations  
+# items = [1, 2, 3]  
+# for perm in permutations(items):  
+#     print(perm)  # Prints all possible orders of items 
+
+# Permutations refer to all possible arrangements of a set of items
+# This code prints each permutation from the given list of items
+
+# itertools documentation
+
+
+# You don’t need to memorize or master every Python library. The key is to be aware of what libraries exist and how they can help you. Over time, as you work on different projects, you’ll naturally learn which libraries to use. Focus on learning the problem-solving process, and libraries will become tools you can reach for when needed.
+
+# Practice Exercises
+# 1. Shopping Trip - itertools
+# Use the itertools.permutations function to:
+# Generate all the possible orders in which you could visit the 4 stores.
+# Print each order.
+# Print the total number of possible trips at the end.
+# Use the len() function to calculate how many permutations are generated.
+# Remember, the number of permutations for n items is n! (factorial), so for 4 stores, you’ll get 4! = 24 permutations.
+
+# Expected output:
+# ('Walmart', 'Costco', 'Target', 'Whole Foods')  
+# ('Walmart', 'Costco', 'Whole Foods', 'Target')  
+# ('Walmart', 'Target', 'Costco', 'Whole Foods')  
+# ...  
+# Total possible trips: 24 
+
+
+
+# 2. Counting Items in a Shopping Cart - collections
+# You just finished grocery shopping, and your shopping cart has several items, some of which appear multiple times. You want to know how many of each item you bought.
+
+# Shopping Cart:
+# shopping_cart = [
+#     "apple", "banana", "apple", "orange", "banana", "apple", 
+#     "milk", "bread", "milk", "eggs", "bread", "bread", 
+#     "carrot", "carrot", "apple", "orange", "banana", "eggs"
+# ]
+
+
+# Use the collections.Counter library to:
+# Count how many times each item appears in the list of groceries.
+# Print each item and its count.
+# Hint: Treat Counter as a dictionary and use .items() to get the keys and values
+
+# Expected Output:
+# apple: 4  
+# banana: 3  
+# orange: 2  
+# milk: 2  
+# bread: 3  
+# eggs: 2  
+# carrot: 2 
+
+#==================================================
+# Day 7: Getting Started with Libraries
+
+# Definition: Libraries are collections of pre-written code that can be used to add specific functionalities to programs. They save time and effort by leveraging the expertise of other developers.
+
+# Key Concepts:
+# Standard Libraries: Bundled with Python and ready to use. 
+# Examples: math, os, datetime.
+# Third-Party Libraries:  Created by developers worldwide, hosted on PyPI. 
+# 	Examples: NumPy, Pandas, Flask.
+# Benefits of Libraries
+# Efficiency: Reuse pre-written code for faster development.
+# Reliability: Built on tested solutions, making your programs more robust.
+# Learning Opportunity: Learn coding best practices from experienced developers.
+# Collaboration: Libraries reflect the collective knowledge of the Python community.
+
+# Installing Third Party Libraries
+# Use pip (Python’s package manager) to install third-party libraries
+# pip install <library_name>
+# # Example:
+# pip install numpy
+
+
+# Syntax
+# # Use the ‘import’ keyword to load a library into your program
+# import <library name>
+
+# # Example
+# import math
+
+
+# Example Usage
+# Find the library that you need by looking up the documentation from the official python website or the python library index:
+# The Python Standard Library — Python 3.13.1 documentation
+# PyPI · The Python Package Index
+# Example function: print the square root of 64
+# 	Step 1: Look for the  math library in any of the resources above. You should find this: https://docs.python.org/3/library/math.html
+# 	Step 2: Find the function that will allow you to get the square root of a number and call that function:
+# import math
+
+# def get_square_root(number):
+#     """
+#     Calculate and print the square root of a given number.
+#     Args:
+#         number (float or int): The number to calculate the square    root of.
+#     Returns:
+#         None: This function prints the result directly.
+#     """
+#     square_root = math.sqrt(number)
+#     print(f"The square root of {number} is {square_root}")
+
+# number = 64
+# get_square_root(number)
+
+# # Result
+# The square root of 64 is 8 
+
+# Practice Exercises
+# BASIC IMPORT: Use the math library to calculate the area of a circle.
+# Write a function that takes the radius of the circle as an input and calculate the area..
+# Hint: Use math.pi and the formula area = pi * radius^2.
+
+# INSTALL AND USE A THIRD-PARTY LIBRARY:
+# Install the requests library using pip
+# Write a function that fetches and prints data from the following API: https://api.github.com
+# Import the requests library
+# Use the .get function in requests to grab the data from the api
+# response = requests.get('https://api.github.com')
+# Use .text to print the response. The result you get should be the same as what you see in https://api.github.com.
+# print(response.text)
+
+# Write two functions that gets the factorial of a number: https://www.mathsisfun.com/numbers/factorial.html
+# Write a custom function that calculates the factorial of a number without using libraries
+# Write a function that does the same thing but uses the math library
+
+# 3. Choosing a Restaurant - random
+# Choosing a restaurant can be tricky, so let’s let Python decide for us! We’ll create a function to randomly pick a restaurant from a list, no matter how many options there are.
+
+# Example List of Restaurants (Feel free to swap these for your own)
+# restaurants = [
+#     "Pizza Palace",
+#     "Sushi Spot",
+#     "Taco Town",
+#     "Burger Barn",
+#     "Pasta Paradise",
+#     "Salad Stop"
+# ]
+
+
+# Create a function called choose_restaurant that:
+# Takes a list of restaurants as input.
+# Randomly selects a restaurant from the list using the random library.
+# Print the name of the selected restaurant.
+# Call the function to test it with at least 5-6 restaurants in a list.
+
+# Hint: Use random.choice(list_name) to randomly select an item from the list.
+# You may need to look at the documentation to understand this function
+
+# Expected Output:
+# Tonight's restaurant choice is: Sushi Spot
+
+
+# Day 7: Regex
+
+# What is Regex and Why is it Useful?
+# Regex (short for regular expressions) is a powerful tool that allows you to find, match, and manipulate text patterns efficiently. Instead of writing long conditional statements to search for something specific, regex lets you describe patterns using concise sequences.
+# For example:
+# Searching for all email addresses in a text.
+# Ensuring phone numbers follow a specific format.
+# Replacing unwanted characters, like punctuation, in a string.
+# Regex is widely used in data cleaning, validation, and extraction, saving time and keeping your code clean and efficient.
+
+
+
+# How Regex Works in Python
+# Python has a built-in library called re that makes it easy to work with regex. Here are the key steps to using regex:
+# Import the re library.
+# Write a pattern (the sequence that describes what you want to find).
+# Use the appropriate re function to apply the pattern to your text.
+
+
+# Basic Components of a Regex Pattern
+# Here is a table summarizing the basic components of regex patterns in Python:
+# Component
+# Description
+# Example
+# Matches
+# .
+# Any single character (except newline).
+# a.b
+# acb, a9b (not ab)
+# ^
+# Start of the string.
+# ^hello
+# Matches strings starting with hello
+# $
+# End of the string.
+# world$
+# Matches strings ending with world
+# *
+# 0 or more occurrences of the previous.
+# ab*
+# a, ab, abb, abbb
+# +
+# 1 or more occurrences of the previous.
+# ab+
+# ab, abb, abbb (not a)
+# ?
+# 0 or 1 occurrence of the previous.
+# ab?
+# a, ab
+# {n}
+# Exactly n occurrences.
+# a{3}
+# aaa
+# {n, m}
+# Between n and m occurrences.
+# a{2,4}
+# aa, aaa, aaaa
+# []
+# Set of characters.
+# [abc]
+# a, b, or c
+# **`
+# `**
+# OR operator.
+# `a
+# ()
+# Grouping of patterns.
+# (abc)+
+# abc, abcabc
+# \d
+# Any digit (0-9).
+# \d
+# 1, 2, etc.
+# \D
+# Any non-digit character.
+# \D
+# a, @, # (not 1)
+# \w
+# Any alphanumeric character (a-z, 0-9, _).
+# \w
+# a, 1, _
+# \W
+# Any non-alphanumeric character.
+# \W
+# @, #, !
+# \s
+# Any whitespace character.
+# \s
+# Space, tab, newline
+# \S
+# Any non-whitespace character.
+# \S
+# a, @, 1 (not space)
+# \b
+# Word boundary.
+# \bword\b
+# Matches word (isolated)
+# \B
+# Non-word boundary.
+# \Bword\B
+# Matches within words
+# \
+# Escape special characters.
+# \.
+# Matches . literally
+# |
+# Represents OR
+# this|that
+# Matches this or that
+
+
+# Summary of Flags
+# The re module in Python offers several flags to modify how regex patterns are interpreted. These flags control case sensitivity, multi-line behavior, and more.
+# Flag
+# Shorthand
+# Description
+# re.IGNORECASE
+# re.I
+# Makes matching case-insensitive.
+# re.MULTILINE
+# re.M
+# Makes ^ and $ match the start and end of lines.
+# re.DOTALL
+# re.S
+# Makes . match newline characters.
+# re.VERBOSE
+# re.X
+# Allows for readable, multi-line regex patterns.
+# re.ASCII
+# re.A
+# Restricts regex matching to ASCII characters only.
+# re.DEBUG
+# None
+# Prints debugging information for the regex.
+
+
+
+
+# Important Regex Functions in Python
+# Here’s an overview of the most common regex functions in the re library:
+
+# re.match()
+# Checks if the pattern matches at the beginning of the string.
+
+# Example: Check if a list starts with "apples":
+# import re
+
+# text = "apples, bananas, carrots"
+# pattern = r"^apples"
+
+# result = re.match(pattern, text)
+# if result:
+#     print("The list starts with apples!")
+# else:
+#     print("No match.")
+
+
+# Quick Tip:
+# If you hover over the function i.e. re.match() it will show you the expected arguments
+
+
+
+
+
+
+# re.search()
+# Searches for the first occurrence of a pattern anywhere in the string.
+
+# Example: Find the word "milk" in a shopping list:
+# import re
+
+# text = "I need eggs, milk, and bread."
+# pattern = r"milk"
+
+# result = re.search(pattern, text)
+# if result:
+#     print("Milk found:", result.group())
+# else:
+#     print("Milk not found.")
+
+
+
+
+# re.findall()
+# Finds all occurrences of a pattern and returns them as a list.
+
+# Example: Find all prices in a grocery receipt:
+# import re
+
+# receipt = "Apples: $2.50, Bananas: $1.20, Bread: $3.75"
+# pattern = r"\$\d+\.\d{2}"  # Matches prices like $2.50
+
+# prices = re.findall(pattern, receipt)
+# print("Prices:", prices)
+
+
+
+
+
+
+# re.sub()
+# Replaces all parts of the string that match the pattern with something else.
+
+# Example: Replace commas with newlines in a shopping list.
+# import re
+
+# text = "apples, bananas, milk, bread"
+# new_text = re.sub(r", ", "\n", text)
+# print("Shopping list:\n", new_text)
+
+
+
+# Regex is a powerful tool for working with text data. By understanding patterns and how to apply them with the re library, you can easily solve problems like searching for prices, validating input, or formatting a shopping list.
+
+# Remember:
+# Start with simple patterns and build up as you gain confidence.
+# You don’t need to memorize everything—focus on understanding the basics and practice
+
+
+
+# What is .group()?
+# When you use functions like re.match() or re.search(), they return a match object if the pattern is found. The .group() method allows you to access:
+# The entire match.
+# Specific parts of the match (called groups) that you’ve captured using parentheses () in your regex pattern.
+# import re
+# match = re.search(r"(\d+)\s(apples)", "I bought 10 apples.")
+# print(match.group(0))  # Entire match: '10 apples'
+# print(match.group(1))  # First group: '10'
+# print(match.group(2))  # Second group: 'apples'
+
+
+
+
+# Other Methods
+# Regex match objects in Python (re.match(), re.search(), etc.) provide several useful methods and attributes for extracting and understanding your regex matches. Here's a breakdown of the most commonly used ones:
+
+# Method/Attribute
+# Description
+# Example Output
+# .group()
+# Entire match or specific groups
+# '10 apples', '10'
+# .groups()
+# All captured groups as a tuple
+# ('5', 'apples')
+# .groupdict()
+# Named groups as a dictionary
+# {'quantity': '3'}
+# .start()
+# Start index of the match
+# 7
+# .end()
+# End index of the match
+# 13
+# .span()
+# Start and end indices as a tuple
+# (7, 13)
+# .re
+# The regex pattern used
+# re.compile('apples')
+# .string
+# The original string searched
+# 'I have apples.'
+# .pos and .endpos
+# Start and end positions where the search was performed
+# 5, 13
+
+
+
+
+
+# Resources 
+# Learning regex can be overwhelming at first because of its symbols and patterns, but with the right resources and tools, you can simplify and master it step by step. Here are some resources to help make learning regex more fun and interesting:
+
+# RegexOne
+# Website: https://regexone.com
+# An interactive website that teaches regex step-by-step with exercises.
+# It starts with the basics and gradually moves to more advanced concepts with live practice.
+
+# Python’s Official re Documentation
+# Website: https://docs.python.org/3/library/re.html
+# A detailed reference for Python's built-in regex library.
+# It covers every function in the re module and includes examples.
+
+# Regex101
+# Website: https://regex101.com
+# An interactive tool to build, test, and debug regex patterns.
+# Live breakdown of the pattern with explanations.
+# Allows you to test patterns against sample text.
+# Supports Python, JavaScript, and other regex engines.
+# This is great for testing tricky patterns or understanding what a regex does.
+
+# Regex Crossword
+# Website: https://regexcrossword.com
+# A gamified way to practice regex concepts by solving puzzles.
+# It’s fun and interactive while helping you think about patterns and how they match text.
+
+
+# Practice Exercises
+# 1. Find All Prices in a Receipt - re.findall()
+# Find and print all prices (e.g., $2.99, $1.50) in the text.
+
+# Input:
+# receipt = "Apples: $2.99, Bananas: $1.50, Milk: $3.75, Eggs: $4.20"
+
+
+# Import the re library.
+# Write a regex pattern that matches prices:
+# Prices start with a dollar sign \$.
+# We need to add an escape character to the $
+# In regex, the $ symbol represents the end of a string, not the literal dollar sign. So we use the \ to use $ literally
+# Followed by one or more digits \d+.
+# Then a period \.
+# Similar to the $ the . matches any single character so we need to use \.  to use . literally
+# Followed by exactly two digits \d{2}.
+# Use the re.findall() function to extract all matches.
+# Use the re documentation to find out what arguments are needed for re.findall()
+# Hint: It takes a pattern and a string
+# Print the list of prices.
+
+# Expected Output:
+# ['$2.99', '$1.50', '$3.75', '$4.20']
+
+
+# 2. Matching Tomatoes - re.match()
+# You have a grocery list containing various items, and you want to identify only the ones that mention "tomato" or "tomatoes" in the name.
+
+# Use re.match() to check if an item in the list contains the word "tomato" or "tomatoes" (case-insensitive).
+# Loop through the list and print the items that match.
+
+# grocery_list = [
+#     "some bread",
+#     "A Can of Diced Tomatoes",
+#     "A can of peas",
+#     "An Heirloom Tomato",
+#     "1 beefsteak tomato",
+#     "A Block Of Cheese",
+#     "3 tomatoes on the vine"
+# ]
+
+
+
+# Expected Output:
+# A Can of Diced Tomatoes
+# An Heirloom Tomato
+# 1 beefsteak tomato
+# 3 tomatoes on the vine
+
+
+# Hint:
+# .*: Matches any characters before or after "tomato" or "tomatoes".
+# \b: Specifies a word boundary to ensure "tomato" is matched as a full word.
+# (tomato|tomatoes): Matches either "tomato" or "tomatoes".
+# .*: Ensures the match can occur anywhere in the string.
+# re.IGNORECASE Makes the match case-insensitive, so it matches "Tomato," "TOMATO," etc.
+
+
+# 3. Searching a Grocery List - re.search()
+# You have a list of dictionaries containing the grocery item name and store. If we want to search the grocery list and see if peanut butter exists in the list how could we leverage the re library to our advantage? 
+
+# Grocery List:
+# grocery_list = [
+#     {"name": "milk", "store": "Walmart"},
+#     {"name": "bread", "store": "Walmart"},
+#     {"name": "eggs", "store": "Walmart"},
+#     {"name": "peanut butter", "store": "Costco"},
+#     {"name": "chicken", "store": "Costco"}
+# ]
+
+
+# Loop through the grocery list 
+# If the search is search result is successful ( peanut butter is found), print the item
+# Search takes a string so you will need to pass it the name of the item
+
+# Expected Output:
+# {'name': 'peanut butter', 'store': 'Costco'}
+
+
+
+
+# 4. Remove Units from a Shopping List - re.sub()
+# You have a shopping list where each item includes a quantity and a unit (like kg, lbs, or g). Your task is to clean up the list so that only the item names remain.
+
+# Grocery List:
+# grocery_list = [
+#     "2kg apples",
+#     "5lbs potatoes",
+#     "3g salt",
+#     "1kg bananas",
+#     "250g rice"
+# ]
+
+
+# Use re.sub() to remove:
+# Any numbers (quantities).
+# Any units (kg, lbs, or g).
+# Print the updated list containing only the item names.
+
+# Expected Output:
+# ['apples', 'potatoes', 'salt', 'bananas', 'rice']
+
+
+# Hint:
+# \d+ matches one or more digits.
+# \s? matches an optional space after the number.
+# (kg|lbs|g)? matches the optional units kg, lbs, or g.
+# Replace the matched pattern with an empty string ("").
+# Use a loop to process each item in the list.
+# Create an empty list (updated list) to add the new items to
+
+# Day 7: Third-Party Libraries and Package Installers
+
+# What Are Third-Party Packages?
+# Third-party packages are pre-built tools or libraries created by developers outside of the official Python standard library. They offer specialized functionalities that can:
+# Save you time by providing ready-to-use tools.
+# Add new features to your project without you needing to build everything from scratch.
+# Think of these packages as add-ons that you can install and use whenever you need extra functionality.
+
+# Clearing Up Confusion?
+# Libraries and Packages can be used interchangeably and this can cause some confusion. A Library is an umbrella term for any collection of reusable code. It doesn’t dictate how the code is structured. A library can be:
+# A single module (e.g., requests).
+# A structured package (e.g., Flask, pandas).
+# Package refers to the organization of the code. A package:
+# Is a directory containing one or more Python modules.
+# Includes an __init__.py file to signal it is a package.
+# Can itself be part of a larger library
+
+# What is Pip?
+# pip is Python’s default package installer, and it makes it easy to download, install, upgrade, or uninstall third-party packages. It works directly from your terminal/command line and connects to the Python Package Index (PyPI), which hosts thousands of Python libraries.
+
+# How to Use Pip
+# Install a Package
+# Use the following command to install a library:
+# pip install package_name
+
+
+# Upgrade a Package
+# To upgrade a package to its latest version, use:
+# pip install --upgrade package_name
+
+
+# Uninstall a Package:
+# If you no longer need a package, uninstall it:
+# pip uninstall package_name
+
+
+# Check Installed Packages:
+# Use this command to see a list of installed packages:
+# pip list
+
+
+
+
+# Top 10 Third-Party Libraries
+# Here are some popular and powerful third-party libraries to get you started:
+# Requests
+# Used for making HTTP requests and interacting with web APIs.
+# NumPy
+# Perfect for numerical computations and handling arrays.
+# Pandas
+# Provides tools for data analysis and manipulation with data frames.
+# Matplotlib
+# Used for data visualization, like creating graphs and charts.
+# Flask
+# A lightweight framework for building simple web applications.
+# BeautifulSoup4
+# A library for web scraping that helps you extract data from websites.
+# SQLAlchemy
+# Makes working with databases easier using Python code.
+# Scikit-Learn
+# A popular library for machine learning tasks like classification and regression.
+# Pytest
+# A testing framework to write and run unit tests for your code.
+# Virtualenv
+# Helps create isolated Python environments so projects can have their own dependencies.
+
+
+
+
+
+# . Over time, as you work on different projects, you’ll naturally learn which libraries to use. Focus on learning the problem-solving process, and libraries will become tools you can reach for when needed.
+
+# Practice Exercises
+# Visualizing Data with Matplotlib
+
+# Part 1: Install and Upgrade Matplotlib
+# Use pip to install matplotlib
+
+# Upgrade matplotlib
+
+# Check the installation
+# Run the following script in Python to confirm Matplotlib was installed successfully
+# import matplotlib
+# print("Matplotlib version:", matplotlib.__version__)
+
+
+
+
+
+
+
+
+
+
+
+
+# Part 2: Visualize Olive Oil Prices with Matplotlib
+# Let’s use sample data to plot the cost of olive oil over the past 12 months. You will create a line chart to display how prices have changed.
+
+# Here’s the sample data for the cost of olive oil in dollars per liter:
+# Month
+# Price ($/L)
+# January
+# 5.50
+# February
+# 5.45
+# March
+# 5.60
+# April
+# 5.80
+# May
+# 6.00
+# June
+# 6.10
+# July
+# 6.20
+# August
+# 6.50
+# September
+# 6.70
+# October
+# 6.90
+# November
+# 7.10
+# December
+# 7.20
+
+
+
+
+
+
+# Import Matplotlib
+# Begin by importing the Matplotlib library:
+# import matplotlib.pyplot as plt
+
+
+# Prepare the Data
+# Store the months and prices as two separate lists
+
+# Create the Line Graph
+# Use Matplotlib’s plot() function to create the graph:
+# plt.plot(months, prices, marker='o', linestyle='-', color='b')
+
+
+# The marker parameter specifies how individual data points on the line are represented. You can add symbols like circles, squares, or triangles to highlight the points.
+
+# Marker Code
+# Description
+# ‘o’
+# Circle
+# ‘^’
+# Upward-pointing triangle
+# ‘s’
+# Square
+# ‘D’
+# Diamond
+# ‘*’
+# Star
+# ‘+’
+# Plus Sign
+# ‘x’
+# Cross (x)
+
+
+
+
+
+
+# The linestyle parameter controls how the line connecting the points appears. You can use solid, dashed, dotted, or no line at all.
+
+# Linestyle Code
+# Description
+# ‘-’
+# Solid line (default)
+# ‘--’
+# Dashed line
+# ‘:’
+# Dotted line
+# ‘-.’
+# Dash-dot line
+# ‘’ or None
+# No line
+
+
+# The color parameter allows you to set the color of the line and markers. You can use:
+# Full color names: e.g., 'blue', 'red'.
+# Short color codes: e.g., 'b', 'g', 'r'
+# Hex codes: e.g., '#FF5733' (orange-red).
+# RGB values: e.g., (0.1, 0.2, 0.5) for a custom color.
+
+# Customize the Graph:
+# Add a title, labels for the axes, and display the grid for better readability:
+# plt.title("Cost of Olive Oil Over the Last Year")
+# plt.xlabel("Month")
+# plt.ylabel("Price ($/L)")
+# plt.grid(True)
+
+
+# Show the Graph:
+# Finally, use plt.show() to display the chart:
+
+# We can use Matplot lib for all sorts of cool visualization and functionality in our app. Keep this in mind for ideas you might want to add in the future.
+
+
+
+# Day 7: Adding Unique ID’s
+
+# What Is the uuid Library?
+# The uuid library is a built-in Python module that generates universally unique identifiers (UUIDs). These IDs are 128-bit values that are incredibly unlikely to repeat, making them perfect for situations where you need unique references.
+
+# Why Are Unique IDs Important?
+# Relying on names to identify items can cause problems:
+# Conflicts: If two items share the same name, errors can occur.
+# Changes: If you change an item’s name, you lose its reference.
+# By using unique IDs, each object gets a distinct identifier that won’t conflict with others. This makes your code:
+# More Reliable: IDs always remain consistent.
+# Scalable: You can manage large lists or datasets without duplication issues.
+
+
+
+
+
+# How to Generate Unique IDs
+# You can generate unique IDs using the uuid library. Here’s how:
+
+# Import the uuid Module
+# import uuid
+
+
+# Generate a UUID
+# Use the uuid.uuid4() method to create a random unique ID:
+# unique_id = str(uuid.uuid4())  # Convert it to a string for easy use
+
+
+
+# Updating Your Code to Use IDs
+# add_item function
+# Make sure the uuid is imported
+# Create a new variable called unique_id and generate the uuid
+# Add an “id” key with the value of the unique_id to the item
+
+# def add_item(name, store, cost, amount, priority, buy):
+#     """
+#     Add a new item to the grocery list.
+
+#     Args:
+#         name (str): The name of the item.
+#         store (str): The store where the item can be bought.
+#         cost (float): The cost of the item.
+#         amount (int): The quantity of the item.
+#         priority (int): The priority level for buying the item.
+#         buy (bool): Whether the item should be bought.
+#     """
+#     # Generate a random UUID
+#     unique_id = int(uuid.uuid4())
+
+#     item = {
+#         "name": name,
+#         "store": store,
+#         "cost": cost,
+#         "amount": amount,
+#         "priority": priority,
+#         "buy": buy,
+#         "id": unique_id
+#         }
+    
+#     grocery_list.append(item)
+
+
+
+# Create the get_index_from_id function
+# Currently in remove_item we are getting the index of the item from the name. We need to leverage our uuid’s instead
+# Create the get_index_from_id function
+# The function should expect and id
+# Create a variable called index as an iterator/counter
+# Create a for loop to iterate through each item in the grocery list
+# If the item id is equal to the id passed into the function return the index
+# Otherwise increment the index value
+# def get_index_from_id(id):
+#     index = 0
+#     for item in grocery_list:
+#         if item["id"] == id:
+#             return index
+#         else:
+#             index += 1
+
+
+
+# remove_item function
+# Now we need to update the functionality of the remove_item function
+# Replace the get_index_from_name function with get_index_from_id
+# Update the parameters, type hints, and docstring accordingly
+# def remove_item(id: int) -> None:
+#     """
+#     Remove an item from the grocery list by its name.
+
+#     Args:
+#         id (int): The assigned id for the item.
+#     """
+#     index = get_index_from_id(id)
+#     grocery_list.pop(index)
+
+
+
+
+# edit_item function
+# We also need to update the functionality of the edit_item function to support ids
+# Add the id to the parameters, update type hints and docstring as needed
+# Replace the get_index_from_name function with get_index_from_id
+# Add the id into the updated item
+# We don’t want the id to ever default to None, so add an if statement to change the value to the old id if an id is not provided
+
+# def edit_item(
+#     name: str,
+#     store: str | None = None,
+#     cost: float | None = None,
+#     amount: int | None = None,
+#     priority: int | None = None,
+#     buy: str | bool = "skip",
+#     id: int | None = None
+# ) -> None:
+#     """
+#     Edit an existing item in the grocery list.
+
+#     Args:
+#         name (str): The name of the item to edit.
+#         store (str | None): Updated store name. Defaults to None.
+#         cost (float | None): Updated cost. Defaults to None.
+#         amount (int | None): Updated amount. Defaults to None.
+#         priority (int | None): Updated priority. Defaults to None.
+#         buy (str | bool): Updated buy status. Defaults to "skip".
+#         id (str | None): Updated id.
+#     """
+#     index = get_index_from_id(id)
+#     old_item = grocery_list[index]
+
+#     if not store:
+#         store= old_item["store"]
+
+#     if not cost:
+#         cost= old_item["cost"]
+
+#     if not amount:
+#         amount = old_item["amount"]
+
+#     if not priority:
+#         priority = old_item["priority"]
+
+#     if buy == "skip":
+#         buy = old_item["buy"]
+
+#     if not id:
+#         id = old_item["id"]
+
+#     item = {
+#         "name": name,
+#         "store": store,
+#         "cost": cost,
+#         "amount": amount,
+#         "priority": priority,
+#         "buy": buy,
+#         "id": id
+#         }
+    
+#     grocery_list[index] = item
+
+
+
+
+# Add id to existing grocery_list
+# Because our current grocery list items do not have id’s, if we want to edit or remove them we will get errors. So we will need to generate ids and manually add them.
+
+# Create a temporary module/file or use my_first_script.py to generate ids
+# Import uuid
+# Loop through a range (use the number of items in your grocery list)
+# For each item in the range generate an id and print it
+# Copy the ids and add them to your grocery list items
+
+# Script to generate ids
+# import uuid
+
+# for i in range(5):
+#     unique_id = int(uuid.uuid4())
+#     print(unique_id)
+
+
+# grocery_list example
+# grocery_list = [
+#     {"name": "milk",
+#      "store": "Walmart",
+#      "cost": 6.47,
+#      "amount": 2,
+#      "priority": 1,
+#      "buy": True,
+#      "id": 88597090693449020373310282999223151150
+#      },
+#     {"name": "bread",
+#      "store": "Walmart",
+#      "cost": 4.50,
+#      "amount": 2,
+#      "priority": 1,
+#      "buy": True,
+#      "id": 290256743130813724105506654546627674346
+#      }
+# ]
+
+
+# Update the edit command
+# Currently in the launch module, we are not passing any id into the edit item function. This will result in a TypeError. 
+# The reason for this is:
+#  if no id is passed into the edit_item function the id will be None.
+# If the id is None we cannot get the index from the id, which means we cannot get the old item to edit
+#    index = get_index_from_id(id)
+#    old_item = grocery_list[index]
+
+# So for now we will create a temporary solution
+# Under the edit command in the launch module:
+# In get the index using from the name
+# Retrieve the item using the index
+# Extract the id from the item
+# And pass the id into the edit item function
+
+    #    elif command == "edit":
+    #         name, store, cost, amount, priority, buy = get_inputs()
+    #         index = agl_core.get_index_from_name(name)
+    #         item = agl_core.grocery_list[index]
+    #         id = item["id"]
+    #         agl_core.edit_item(name, store, cost, amount, priority, buy, id)
+
+
+
+
+
+
+
+
+
 
 
 
