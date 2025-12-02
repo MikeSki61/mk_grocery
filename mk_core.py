@@ -24,7 +24,6 @@ import uuid
 #     unique_id = int(uuid.uuid4())
 #     print(unique_id)
 
-
 grocery_list: list[dict[str, float | int | bool | str]] = [
     {
         "name": "Milk",
@@ -36,14 +35,13 @@ grocery_list: list[dict[str, float | int | bool | str]] = [
         "id": 279867738712164953486078660868091747138
     },
     {
-        "name": "Chese",
+        "name": "Cheese",
         "store": "Walmart",
         "cost": 2.50,
         "amount": 1,
         "priority": 1,
         "buy": True,
         "id":115729385036103459303260851747783958910
-        
     },
 ]
 
@@ -105,21 +103,21 @@ def edit_item(
     amount: int | None=None, 
     priority: int | None=None,
     buy: str | bool="skip", 
-    id: int | None = None,
+    id: int | None=None,
 ):
     """This is  function the allows the user to edit the items in a list.
 
     Args:
         name (str):The name of the item edit
-        store (str): Updated staore name. Defaults to none.
-        cost (float):Updated cost. Defaults to None.
-        amount (int): Updated amount. Defaults to None.
-        priority (int): Updated priority. Defaults to None.
-        buy (bool): Updated buy status. Defaults to "skip"
-        id (str:) Updated id.
+        store (str | None)ed staore name. Defaults to none.
+        cost (float | None):Updated cost. Defaults to None.
+        amount (int | None): Updated amount. Defaults to None.
+        priority (int | None): Updated priority. Defaults to None.
+        buy (str | bool): Updated buy status. Defaults to "skip"
+        id (str | None): Updated id.
     """
     
-    index = get_index_from_name(id)
+    index = get_index_from_id()
     old_item = grocery_list[index]
     
     if not store:
@@ -192,7 +190,7 @@ will return the name of the item.
     """
 
     for item in grocery_list:
-        if item ["name"] == name: 
+        if item ["name"].lower() == name.lower(): 
             return index
         else:
             index += 1 
