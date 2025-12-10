@@ -18,6 +18,7 @@ Version:1.2.0
 # cost is a float, priority is an integer and buy is a boolean.-True or False.
 
 import uuid
+import re
 
 # To generate a unique id on existing list
 # for i in range(2):
@@ -25,7 +26,8 @@ import uuid
 #     print(unique_id)
 
 grocery_list: list[dict[str, float | int | bool | str]] = [
-    {
+
+{
         "name": "Milk",
         "store": "Walmart",
         "cost": 6.47,
@@ -33,7 +35,7 @@ grocery_list: list[dict[str, float | int | bool | str]] = [
         "priority": 1,
         "buy": True,
         "id": 279867738712164953486078660868091747138
-    },
+},
     {
         "name": "Cheese",
         "store": "Walmart",
@@ -44,6 +46,7 @@ grocery_list: list[dict[str, float | int | bool | str]] = [
         "id":115729385036103459303260851747783958910
     },
 ]
+
 
 #Global variable
 TAX = 0.08
@@ -117,7 +120,7 @@ def edit_item(
         id (str | None): Updated id.
     """
     
-    index = get_index_from_id()
+    index = get_index_from_id(id)
     old_item = grocery_list[index]
     
     if not store:
@@ -147,6 +150,9 @@ def edit_item(
         "buy": buy,
         "id": id
         }
+    
+    if not name:
+        name = old_item["name"]
 
     grocery_list[index] = item
    
@@ -160,6 +166,7 @@ creating a new list called the buy_list.
         if item["buy"]:
             buy_list.append(item)
 
+
         if buy_list:
             for item in buy_list:
                 print(
@@ -170,6 +177,18 @@ creating a new list called the buy_list.
         total_cost = calculate_total_cost(buy_list, round_cost=True)
                 
         print(f"The total cost is ${total_cost}")
+
+def search_item_name(search_item):
+    matching_items = []
+    pattern = rf"^{search_item}"
+
+
+    for item in grocery_list:
+        if re.match(pattern, item["name"], re.IGNORECASE):
+            matching_items.append(item)
+
+    return matching_items
+
 
 def get_index_from_id(id):
     index = 0
