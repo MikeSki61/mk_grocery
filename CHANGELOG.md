@@ -1,6 +1,14 @@
 # Changelog
 
-## [1.2.0]  - 20205-11-28
+## [1.3.0] - 2025-12-10
+
+## Added day 7 libraries
+-added search function
+-added function to edit and remove items by id
+-created uuid function
+
+
+## [1.2.0]  - 2025-11-28
 
 ## Aded Day-6-coding-standards
 

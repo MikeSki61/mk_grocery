@@ -2,43 +2,27 @@
 import mk_core
 print("Welcome to the brand new MK Grocery APP!")
 
+
+
+
 def launch():
     while True:
         command = input("Enter a command(add, remove, edit, list, export, " \
-        "quit):")
+        "quit, search):")
 
-        if command == "add": # This will allow the user to add items.
-            print("Here's where you add items to your grocery list.")
-            name, store, cost, amount, priority, buy = get_inputs()
-            mk_core.add_item(
-                name=name, 
-                store=store, 
-                cost=cost, 
-                amount=amount,
-                priority=priority, 
-                buy=buy
-            )
+        if command == "add":
+            handle_add_command()
 
-            print(f"{name} added to list")
 
-        if command == "remove":  # this is the command to remove an item.
-            print("Here's where you remove items from your grocery list.")
-            name = input("Enter the item to remove: ")
+        if command == "remove":
 
-            mk_core.remove_item(name)
+            handle_remove_command()
 
-        if command == "edit": # This is the command to be used to edit
-            # items in the list.
-            print("This allows you to edit any item on yoiur shopping list.")
-            name, store, cost, amount, priority, buy=get_inputs()
+        if command == "edit":
 
-            mk_core.edit_item(name, store, cost, amount, priority, buy)
-            print(f"{name} was edited.")
-
+            handle_edit_command()
 
         if command == "list":
-            # This command will list the items
-            # selected in the list from the core module.
             print("This allows you to list the items in your shopping list")
             mk_core.list_items()
 
@@ -46,13 +30,119 @@ def launch():
             print("Use this to export your shopping list.")
             mk_core.export_items()
 
+        if command == "search":
+            search_keyword = input("What is the name of the item" \
+            " you would like to search? ")
+            item = mk_core.search_item_name(search_keyword)
+
+            if item:
+                print(f"These items match your search: {item}")
+            else:
+                print(f"No items match the search ")
+
         if command == "quit":
             print("This will quit the program")
             break
 
+def handle_add_command(): # This will allow the user to add items.
+    name, store, cost, amount, priority, buy = get_inputs()
+    mk_core.add_item(
+        name=name, 
+        store=store, 
+        cost=cost, 
+        amount=amount,
+        priority=priority, 
+        buy=buy
+     )
+
+    print(f"{name} added to list")
+            
+def handle_remove_command():  # this is the command to remove an item.
+            #
+        name = input("Which item would you like to remove? ")
+        matches = mk_core.search_item_name(name)
+
+        if not matches:
+            print(f"I\'m sorry, I could not find a match for {name}")
+
+        elif len(matches) > 1:
+            for match_num, match in enumerate(matches, start =1):
+                match_string = (
+                    f"{match_num}. "
+                    f"| Name: {match["name"]} "
+                    f"| Store: {match["store"]} "
+                    f"| Cost: {match["cost"]} "
+                    f"| Amount: {match["amount"]} "
+                    f"| Priority: {match["priority"]} "
+                    f"| Buy: {match["buy"]} |" 
+                )
+                print(match_string)
+
+            item_num = input('\nPlease select the number you would like to remove: ')
+            match_item = matches[int(item_num) - 1]
+            mk_core.remove_item(id=match_item['id'])
+            print(f'\nItem {match_num} has been removed.')
+
+        else:
+            match_item = matches[0]
+            mk_core.remove_item(id=match_item["id"])
+            print(f"That item has been removed")
+
+def handle_edit_command(): # This is the command to be used to edit
+        target_item = input("Which item would you like to edit? ")
+        matches = mk_core.search_item_name(target_item)
+
+        if not matches:
+            print(f"There are no items twith the name{target_item}")
+
+        elif len(matches) > 1:
+            match_num = 1
+            for match in matches:
+                match_string = (
+                    f"item {match_num} "
+                    f"| name: {match["name"]} "
+                    f"| store: {match["store"]} "
+                    f"| cost: {match["cost"]} "
+                    f"| amount: {match["amount"]} "
+                    f"| priority: {match["priority"]} "
+                    f"| buy: {match["buy"]}"
+                )
+                print(match_string)
+                match_num += 1
+
+            item_num = input(
+                "Which item do you want to edit?"
+                )
+            match_item = matches[int(item_num) - 1]
+            name, store, cost, amount, priority, buy=get_inputs()
+            mk_core.edit_item(
+                 name, 
+                 store, 
+                 cost, 
+                 amount, 
+                 priority, 
+                 buy, 
+                 id=match_item["id"])
+        else:
+            match_item = matches[0]
+            name, store, cost, amount, priority, buy=get_inputs()
+            mk_core.edit_item(
+                name, 
+                 store, 
+                 cost, 
+                 amount, 
+                 priority, 
+                 buy, 
+                 id=match_item["id"])
+
+            print(f"{name} was edited.")
+                
+       
+
 def get_inputs():
         """The following functions are for the inputs
     to collect information for the list.
+export
 
         Returns:
             string:  item to be added as a string
@@ -126,7 +216,7 @@ def get_inputs():
             except ValueError:
                 print("Invalid input. Please enter'true' or 'false'")
 
-        return name, store, cost, amount, priority, buy     
+        return name, store, cost, amount, priority, buy 
 
 # Call the function
 if __name__ == '__main__':
