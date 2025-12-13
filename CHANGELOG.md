@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0] -2025-112-12
+
+## Added Day 8 File Handling
+-added an export function that writes to a JSON file
+-added a logging feature
+
+-
+
 ## [1.3.0] - 2025-12-10
 
 ## Added day 7 libraries
