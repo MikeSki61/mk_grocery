@@ -1,0 +1,15 @@
+EXPORT_PATH = "D/my_dev/mk_grocery_list"
+GROCERY_LIST = "grocery_list"
+
+NAME_DEFAULT = "unamed item"
+STORE_DEFAULT = "Wal-Mart"
+COST_DEFAULT = 0.00
+AMOUNT_DEFAULT = 1
+PRIORITY_DEFAULT = 1
+PRIORITY_MIN = 1
+PRIORITY_MAX = 5
+BUY_DEFAULT = True
+BUY_TRUE = ["yes", "true"]
+BUY_FALSE = ["no", "false"]
+
+
