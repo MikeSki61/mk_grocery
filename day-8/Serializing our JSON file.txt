@@ -1,0 +1,154 @@
+Day 8: Serializing Our JSON Files
+
+Let’s apply our knowledge of file handling and serialization to our app.
+
+Creating the constants.py File
+Let’s clean up our code by moving all constant variables into a new file called constants.py. 
+This makes our project easier to manage and keeps everything readable.
+Add these constants:
+EXPORT_PATH = "C:/agamid_grocery_list"
+GROCERY_LIST = "grocery_list"
+
+EXPORT_PATH: This is the directory where we’ll save all our data, like the grocery list file, logs, or other outputs.
+You can adjust this location to be wherever you want it to, typically the C: drive in windows is fine
+On Max/Linux there may be a better path, such as your user or root directory
+GROCERY_LIST: This will be the name of the file where we save all of our grocery items.
+
+Setting Up the utils.py File
+Now let's create a utils.py file. 
+The utils module is where we store reusable helper functions that don’t belong to any specific part of our program.
+At the top of utils.py, let’s import the json module
+import json
+
+
+ Writing Helper Functions
+We Are going to add two helper functions to give us the ability to serialize and deserialize data
+The save_data Function
+Create a function called save_data. This function will:
+Take a file path and some data as inputs.
+Default the data to an empty list if none is provided.
+Use the with open statement to safely open the file in write mode ('w').
+Serialize the data using json.dump with an indentation of 4 for readability."
+def save_data(file_path, data):
+    if not data:
+        data = []
+    
+    # Save the list of dictionaries to the file
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
+
+The load_data Function
+Add the load_data function. This will:
+Take a file path as input.
+Default the data to an empty list.
+Use the with open statement to open the file in read mode ('r').
+Deserialize the JSON data using json.load.
+Use a try-except block to handle a FileNotFoundError gracefully. If the file doesn’t exist, it will return an empty list instead of crashing."
+def load_data(file_path):
+    data = []
+    try:
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+            return data
+
+    except FileNotFoundError:
+        return data
+
+
+
+
+Updating the Core Module
+Move to the core module and integrate our new constants and utility functions:
+Import os, constants, and utils at the top of the file.
+import os
+import re
+import uuid
+
+import constants
+import utils
+
+
+Delete the old grocery_list variable because we no longer want to store our data in a global variable.
+
+Creating the get_grocery_list Function
+Add a function called get_grocery_list:
+Use os.makedirs with EXPORT_PATH and the exist_ok=True flag to ensure the export directory exists.
+Build the file_path using os.path.join with EXPORT_PATH and GROCERY_LIST.
+If the file exists, load the data using the load_data function from utils.
+Otherwise, default the list to an empty list and save it to create the file for future use.
+Return the grocery list.
+def get_grocery_list():
+    # Create the export path if it doesn't exist
+    os.makedirs(constants.EXPORT_PATH, exist_ok=True)
+
+    # Get the path to the grocery list
+    file_path = os.path.join(
+        constants.EXPORT_PATH, f"{constants.GROCERY_LIST}.json"
+        )
+    
+    if os.path.exists(file_path):
+        # Get the grocery list
+        grocery_list = utils.load_data(file_path)
+
+    else:
+        # Create an empty grocery list and save
+        print("No JSON path found, creating JSON path")
+        grocery_list = []
+        utils.save_data(file_path, grocery_list)
+
+    return grocery_list
+
+
+
+Updating Existing Functions
+Now that we have the get_grocery_list function, we need to update all the functions where the grocery_list variable was used.
+Replace any reference to the old grocery_list with the new get_grocery_list logic.
+
+Saving Changes
+In functions like add_item, edit_item, and remove_item, call the save_data function after making changes to the grocery list. 
+This ensures the data is updated in the file whenever we make edits.
+Any time we make changes to the grocery list we want to save it
+
+
+
+
+
+
+
+
+add_item
+As an example here is how we might approach the add_item function:
+Swap in the get_grocery_list function
+Append the new item to the grocery list
+Build the file path to the grocery_list.json
+Save the grocery list data with our function from the utils module
+   grocery_list = get_grocery_list()
+    grocery_list.append(item)
+
+    file_path = os.path.join(
+        constants.EXPORT_PATH, f"{constants.GROCERY_LIST}.json"
+        )
+    utils.save_data(file_path, grocery_list)
+
+    logging.info(
+        f"Added: {name} {store} {cost} {amount} {priority} {buy} {unique_id}"
+        )
+
+
+
+
+
+Updating the Launch Module
+Finally, let’s update the launch module. 
+Anywhere the grocery_list variable is used—like in the list command—replace it with the new logic from get_grocery_list to ensure the data is pulled from the file."
+       elif command == "list":
+            grocery_list = agl_core.get_grocery_list()
+            agl_core.list_items(grocery_list)
+
+
+Testing Serialization
+Now that you have implemented the code change, it is important to test it to make sure we are getting the expected behavior.
+Test each function (add, remove, edit, list, export etc).
+Check the results in your EXPORT_PATH
+There should now be a .json file that is updated every time you change the grocery_list
+

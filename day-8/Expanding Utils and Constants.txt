@@ -1,0 +1,244 @@
+Day 8: Expanding Utils and Constants
+
+Now that we’ve set up our constants and utils modules, let’s expand their functionality. 
+
+Adding Defaults to the constants.py File
+Let’s start by enhancing our constants module. 
+NAME_DEFAULT: A fallback name for items when no input is provided, like ‘unnamed item’, ‘n/a’, or ‘unknown’.
+STORE_DEFAULT: A default store name. If you always shop at one store, this saves you time.
+COST_DEFAULT: Default cost, such as 0.00. This works well when you don’t know the price or the item is free (catering/ prepaid/ free).
+AMOUNT_DEFAULT: Default amount. Usually, you need just one item.
+PRIORITY_DEFAULT: A default priority. assuming 1 is a high priority and 5 is low.
+PRIORITY_MIN and PRIORITY_MAX: Setting the priority range to 1 and 5.
+BUY_DEFAULT: Set to True, meaning the item is intended to be purchased by default.
+BUY_TRUE: A list of inputs like ‘yes’ and ‘true’. 
+BUY_FALSE: A list of inputs like ‘no’ and ‘false’.
+
+Expected Result:
+NAME_DEFAULT = "unnamed item"
+STORE_DEFAULT = "Walmart"
+COST_DEFAULT = 0.00
+AMOUNT_DEFAULT = 1
+PRIORITY_DEFAULT = 1
+PRIORITY_MIN = 1
+PRIORITY_MAX = 5
+BUY_DEFAULT = True
+BUY_TRUE = ["yes", "true"]
+BUY_FALSE = ["no", "false"]
+
+
+Expanding the utils.py
+Now, let’s add a simple helper function to improve how we print outputs.
+Adding a Delimiter Function
+A delimiter is a character or symbol used to separate data visually. This keeps outputs clean and organized without looking overwhelming.
+Create a function called get_line_delimiter. This function will:
+Return a simple character like '-', = or any other symbol you prefer.
+If you ever want to change the style, you only need to update it here."
+
+def get_line_delimiter():
+    delimiter = "----------"
+
+    return delimiter
+
+
+
+Updating launch.py
+Now use our new constants and the helper function in launch.py to improve user inputs and the overall logic.
+Import Constants and Utils
+At the top of launch.py, import constants and utils.
+
+import agl_core
+import constants
+import utils
+
+
+Update Input Functions to Use Defaults
+Separated user input logic into smaller functions like get_name_input, get_store_input, and so on. Let’s update these functions to support the new defaults.
+ 
+
+
+Refer to the following for each input function
+get_name_input
+def get_name_input():
+    """
+    Get the user input for the name attribute
+
+    Returns:
+        name (str): The name of the item
+    """
+    print("Enter a name for the item. (ex. Ice Cream)")
+
+    # Get the name input
+    name = input("Item name: ").strip()
+
+    # No name provided, set to default
+    if not name:
+        name = constants.NAME_DEFAULT
+
+    return name
+
+
+get_store_input
+def get_store_input():
+    print("Enter the name of the store for the item. (ex. Walmart)")
+
+    # Get the store input
+    store = input("Store name (or 'skip' to leave blank): ").strip()
+
+    # No store provided, set to default
+    if not store:
+        store = constants.STORE_DEFAULT
+
+    return store
+
+
+
+get_cost_input
+def get_cost_input():
+    print("Enter the cost of the item. (ex. 5.25)")
+
+    while True:
+        # Get the cost input
+        cost = input("Item price: ").strip()
+
+        # No cost input provided, set to default
+        if not cost:
+            cost = constants.COST_DEFAULT
+            break
+
+        try:
+            # Convert the cost to a float
+            cost = float(cost)
+            break
+
+        # Unable to convert the cost to a float
+        except ValueError:
+            print("Invalid input. Please enter a valid price.")
+
+    return cost
+
+
+
+get_amount_input
+def get_amount_input():
+    print("Enter the amount you need to get. (ex. 5)")
+    while True:
+
+        # Get the amount input
+        amount = input(
+            "Item quantity: "
+            ).strip()
+        
+        # Amount not provided, set to default
+        if not amount:
+            amount = constants.AMOUNT_DEFAULT
+            break
+
+        try:
+            # Convert the amount to an int
+            amount = int(amount)
+
+            # Amount must be at least 1
+            if amount > 0:
+                break
+
+            print("Quantity must be a positive number.")
+
+        # Unable to convert amount to an int
+        except ValueError:
+            print("Invalid input. Please enter a valid quantity.")
+
+    return amount
+
+
+
+
+get_priority_input
+def get_priority_input():
+    p_min = constants.PRIORITY_MIN
+    p_max = constants.PRIORITY_MAX
+    
+    print(
+        f"Enter the priority for the item between "
+        f"{p_min}-{p_max}. (ex. 2)"
+        )
+
+    while True:
+        # Get the priority input
+        priority = input("Priority: ").strip()
+        
+        # No input provided, set to default
+        if not priority:
+            constants.PRIORITY_DEFAULT
+            break
+
+        try:
+            # Convert the priority to an int
+            priority = int(priority)
+
+            # Check priority is within min to max
+            if p_min <= priority <= p_max:
+                break
+
+        # Failed to convert priority to an int
+        except ValueError:
+            print(
+                f"Invalid input. Please enter a number between "
+                f"{p_min} and {p_max}."
+                )
+
+    return priority
+
+
+
+
+get_buy_input
+def get_buy_input():
+    print("Enter if this item should be purchased now. (ex. yes)")
+
+    while True:
+        # Get the buy input
+        buy = input("Buy: ").strip().lower()
+
+        # No buy input provided
+        if not buy:
+            buy = constants.BUY_DEFAULT
+            break
+
+        # Buy input is true
+        if buy in constants.BUY_TRUE:
+            buy = True
+            break
+
+        # Buy input is false
+        elif buy in constants.BUY_FALSE:
+            buy = False
+            break
+
+        # Buy input was not valid
+        else:
+            print(
+                "Invalid input. Please enter true|yes OR false|no")
+
+    return buy
+
+
+
+Use the Delimiter Function
+Anywhere we print outputs—like after asking for input or running a 
+command—use the get_line_delimiter function.
+This keeps outputs consistent and allows you to change the delimiter
+ style in one place, instead of hunting through your entire codebase.
+Note: You can use search-and-replace (Ctrl/Cmd + H) to easily swap 
+old delimiters with the new helper function.
+After you make these changes you should get something like this
+
+Just look at how much cleaner and user friendly this is now.
+
+
+
+
+Test each function and make sure it behaves as expected
+Any time you make a change to the grocery list you should see the 
+change in the grocery_list.json that lives in the EXPORT_PATH
+

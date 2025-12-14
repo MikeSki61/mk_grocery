@@ -1,0 +1,102 @@
+import os
+# Exercise 1: Identify the Current Working Directory
+# Get the starting point for your operations.
+
+# Use os.getcwd() to print the current working directory.
+# Save the current directory path to a 
+# variable for use in later exercises.
+# Print out the current directory to see the value
+
+#Exercise #1: Identify Current Working Directory
+
+current_dir = os.getcwd()
+print("Current working directory:", current_dir )
+
+contents = os.listdir()
+
+print("Contents of the current directory:", contents)
+
+# # # Exercise 2: Build and Create Nested Directories
+# new_dir = os.makedirs("d/my_dev/Project/Module1/Data")
+# new_dir = os.mkdir("new_folder")
+# print(new_dir)
+
+
+# # Exercise 3: Add Files to the Directories
+data_file = os.path.join(current_dir, "Project", "Module1", "Data, data.txt")
+script_file = os.path.join(current_dir, "Project", "Module1", "script.py")
+print(data_file)
+print(script_file)
+
+
+
+# # Exercise 4: List and Verify Directory Contents
+
+contents = os.listdir(current_dir )
+print("web_dev", contents)
+
+contents = os.listdir()
+print("Contents of the current directory:", contents)
+
+
+# # # Exercise 5: Clean Up the File Structure
+file_path = "/d/my_dev/Project/Module1/Data"
+
+# # # Check if the file exists before deleting
+if os.path.exists(file_path):
+    os.rmdir(file_path)
+    print(f"File '{file_path}' deleted successfully!")
+else:
+    print(f"File '{file_path}' does not exist.")
+# os.mkdir("new_folder")
+import shutil
+
+# # # Directory to delete
+dir_path = "d/my_dev/Project"
+
+# # Check if the directory exists
+if os.path.exists(dir_path):
+    shutil.rmtree(dir_path)
+    print(f"Directory '{dir_path}' and its contents deleted successfully!")
+else:
+    print(f"Directory '{dir_path}' does not exist.")
+
+contents = os.listdir()
+print("Contents of the current directory:", contents)
+
+current_dir = os.getcwd()
+print("Current working directory:", current_dir )
+
+# print("Directory 'new_folder' created!")
+# import os
+# contents = os.listdir()
+# print("Contents of the current directory:", contents)
+
+
+file_path = "d/my_dev/d/new_folder/"
+
+# Check if the file exists before deleting
+if os.path.exists(file_path):
+    os.rmdir(file_path)
+    print(f"File '{file_path}' deleted successfully!")
+else:
+    print(f"File '{file_path}' does not exist.")
+    contents = os.listdir()
+
+print("Contents of the current directory:", contents)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
