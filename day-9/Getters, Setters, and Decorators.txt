@@ -1,0 +1,168 @@
+Day 9: Getters, Setters and Decorators
+
+In this document, we’ll reinforce what you just learned in the video on Getters, Setters, and Decorators. These tools give you powerful control over how objects manage and protect data, and they help you write cleaner, more efficient code.
+Getters and Setters
+In object-oriented programming, we want to avoid directly exposing internal variables. This is where getters and setters come in:
+Getter: lets you retrieve a value safely.
+
+
+Setter: lets you update a value while adding validation or control.
+
+
+Example WITHOUT Getters and Setters
+class GrillItem:
+    def __init__(self, name):
+        self.name = name
+
+grill_item = GrillItem("Burger")
+grill_item.name = "Hot Dog"
+
+Here we can’t control what gets assigned to self.name
+Example WITH Getters and Setters
+class GrillItem:
+    def __init__(self, name):
+        self._name = name 
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, new_name):
+        if len(new_name) > 0:
+            self._name = new_name
+        else:
+            print("Grill item name cannot be empty!")
+
+grill_item = GrillItem("Burger")
+grill_item.set_name("")
+grill_item.set_name("Hot Dog")
+print(grill_item.get_name())
+
+The setter allows us to set the name and validate before setting, so we don’t try to set it to something that might cause issues, like an empty string
+The getter gets the value without tampering with the attribute directly
+
+
+What’s a Protected Attribute?
+A protected attribute:
+Starts with a single underscore (e.g., _name)
+Isn’t truly private but signals: “Don’t touch unless you know what you're doing”
+Encourages use of getters and setters
+A private attribute:
+Has a double underscore (__name) which makes it even more private
+Doing this will automatically modify the attribute to something like _ClassName__name, which is a name mangling. This makes it more difficult (but not impossible) to access from outside of the class. 
+
+
+
+@property
+Instead of writing separate get_ and set_ methods, Python gives us a cleaner way:
+class GrillItem:
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, new_name):
+        if len(new_name) > 0:
+            self._name = new_name
+        else:
+            print("Grill item name cannot be empty!")
+
+
+Now we can access name like a regular attribute:
+grill_item = GrillItem("Burger")
+print(grill_item.name)        # Getter
+grill_item.name = "Hot Dog"   # Setter
+grill_item.name = ""          # Validation error
+
+
+Decorators: Functions That Modify Functions
+A decorator is a function that wraps another function to add behavior, like logging, timing, or validation.
+
+def my_decorator(func):
+    def wrapper():
+        print("Before grilling...")
+        func()
+        print("After grilling...")
+    return wrapper
+
+@my_decorator
+def grill_burger():
+    print("Grilling the burger!")
+
+grill_burger()
+
+
+Output:
+Before grilling...
+Grilling the burger!
+After grilling...
+
+
+If you look at this decorator you might notice that it is just the function sandwiched in between two text statements or rather “decorations”, and that’s all these are, functions that are decorated with additional code. 
+
+Decorator inside of a class
+import time
+
+class GrillTimer:
+    def __init__(self, item):
+        self.item = item
+
+    def timer_decorator(self, func):
+        def wrapper():
+            start = time.time()
+            func()
+            end = time.time()
+            print(f"Grilling time for {self.item}: {end - start} seconds")
+        return wrapper
+
+    @property
+    def grill(self):
+        @self.timer_decorator
+        def slow_grill():
+            time.sleep(2)
+            print(f"{self.item} is ready!")
+        return slow_grill
+
+grill_item = GrillTimer("Burger")
+grill_item.grill()
+
+
+This example shows:
+How to create a decorator method inside a class.
+How to use @property to simplify access.
+How to wrap a function dynamically inside another function.
+
+
+Instance Methods
+➤ What They Are:
+Operate on a specific instance (object) of a class.
+
+
+Can access and change instance attributes (data tied to that specific object).
+
+
+Always have self as their first parameter.
+
+Example:
+class CoffeeOrder:
+    def __init__(self):
+        self.orders = []
+
+    def add_order(self, drink):
+        self.orders.append(drink)
+        print(f"{drink} added to your order.")
+
+    def cancel_order(self, drink):
+        if drink in self.orders:
+            self.orders.remove(drink)
+            print(f"{drink} removed from your order.")
+        else:
+            print(f"{drink} not found in your order.")
+
+    def show_order(self):
+        print("Your Order:", ", ".join(self.orders))
+
+
+
