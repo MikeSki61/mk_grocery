@@ -1,7 +1,5 @@
 import constants
 
-#Protected Attributes======================
-
 class GroceryItem:
     def __init__(self):
         self._name = constants.NAME_DEFAULT
@@ -56,9 +54,9 @@ def store(self, value):
 
 @cost.setter
 def cost(self, value):
-        if not isinstance(value, (int, float)):
-            raise ValueError(f"Cost must be an int or float.")
-        self._cost = float(value)
+    if not isinstance(value, (int, float)):
+        raise ValueError(f"Cost must be an int or float.")
+    self._cost = float(value)
 
 @amount.setter
 def amount(self, value):
@@ -68,20 +66,20 @@ def amount(self, value):
 
 @priority.setter
 def priority(self, value):
-        p_min = constants.PRIORITY_MIN
-        p_max = constants.PRIORITY_MAX
+    p_min = constants.PRIORITY_MIN
+    p_max = constants.PRIORITY_MAX
 
-        if not value:
-            pass
+    if not value:
+        pass
 
-        if not isinstance(value, int):
-            raise ValueError(f"Priority must be an int, {value}")
+    if not isinstance(value, int):
+        raise ValueError(f"Priority must be an int, {value}")
 
-        if p_min <= value <= p_max:
-            pass
-        else:
-            raise ValueError("Priority must be between {p_min} and {p_max} ")
-        self._priority = value
+    if p_min <= value <= p_max:
+        pass
+    else:
+        raise ValueError("Priority must be between {p_min} and {p_max} ")
+    self._priority = value
 
 @buy.setter
 def buy(self, value):

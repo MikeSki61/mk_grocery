@@ -28,5 +28,5 @@ def load_data(file_path):
     
 def get_line_delimiter():
      delimiter = "=========="
-
+     
      return delimiter

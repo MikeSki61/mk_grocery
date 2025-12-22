@@ -24,7 +24,6 @@ import log_config
 import utils
 from grocery_item import GroceryItem
 
-
 class GroceryList:
     
     def __init__(self):
@@ -61,8 +60,7 @@ class GroceryList:
         grocery_item.id  = unique_id
 
         self.grocery_list.append(grocery_item)
-        # file_path = os.path.join(constants.EXPORT_PATH, f'{constants.GROCERY_LIST}.json')
-        utils.save_data(self.grocery_list_path, self.grocery_list)
+        self.save_data()
         logging.info(
             f"Added: {name} {store} {cost} {amount} {priority} {buy} {unique_id}"
         )
@@ -80,11 +78,10 @@ class GroceryList:
         """
         
         index = self.get_index_from_id(id)
-        self.grocery_list = self.get_grocery_list()
+        # self.grocery_list = self.set_grocery_list()
         self.grocery_list.pop(index)
 
-        # file_path = os.path.join(constants.EXPORT_PATH, f'{constants.GROCERY_LIST}.json')
-        utils.save_data(self.grocery_list_path, self.grocery_list)
+        self.save_data()
 
     def set_grocery_list(self):
         os.makedirs(constants.EXPORT_PATH, exist_ok=True)
@@ -92,7 +89,7 @@ class GroceryList:
             constants.EXPORT_PATH, f"{constants.GROCERY_LIST}.json")
 
         if os.path.exists(file_path):
-            grocery_list = utils.load_data()
+            grocery_list = self.load_data()
 
         else:
             #Create and empty grocery list and save.
@@ -100,8 +97,7 @@ class GroceryList:
             grocery_list = []
             self.save_data()
             
-
-        self.grocery_list = grocery_list
+            self.grocery_list = grocery_list
 
     def search_item_name(self, search_item):
         """
@@ -116,12 +112,11 @@ class GroceryList:
         matching_items = []
         pattern = rf"^{search_item}"
 
-        grocery_list = self.get_grocery_list()
+        # grocery_list = self.set_grocery_list()
     
-        for item in grocery_list:
+        for item in self.grocery_list:
             if re.match(pattern, item.name, re.IGNORECASE):
                 matching_items.append(item)
-    
         return matching_items
         
     def get_index_from_id(self, id):
@@ -135,9 +130,8 @@ class GroceryList:
             int:  The index of the grocery item in the grocery list 
         """
         index = 0
-        grocery_list = self.get_grocery_list()
 
-        for item in grocery_list:
+        for item in self.grocery_list:
             if item.id == id:
                 return index
             else:
@@ -146,13 +140,13 @@ class GroceryList:
     def get_index_from_name(self, name: str):
     
         """_The get_index_from_name(name) function 
-    will return the name of the item.
+        will return the name of the item.
 
         Returns:
             _name_: _will return a string
         """
         index = 0
-        self.grocery_list = self.get_grocery_list()
+        # self.grocery_list = self.get_grocery_list()
 
         for index, item in enumerate(self.grocery_list):
             if item.name == name:
@@ -209,13 +203,13 @@ class GroceryList:
         if id:
             current_item.id = id
 
-        utils.save_data(self.grocery_list_path, self.grocery_list)
+        self.save_data()
 
     def export_items(self):
         """_The export_items() function will export the items that may have
-    been edited, removed or  added to the list, 
-    creating a new list called the buy_list.
-    """
+        been edited, removed or  added to the list, 
+        creating a new list called the buy_list.
+        """
         buy_list = []
         for item in self.grocery_list:
             if item.buy:
@@ -225,13 +219,14 @@ class GroceryList:
             self.list_items(buy_list)
 
             total_cost = self.calculate_total_cost(buy_list, round_cost=True)
+            print(f"The total cost is ${total_cost}")
             print(utils.get_line_delimiter())
 
             exported_list_file = os.path.join(
                 constants.EXPORT_PATH, constants.EXPORT_LIST
         )
 
-            with open(exported_list_file, "W") as f:
+            with open(exported_list_file, "w") as f:
                 item_num = 1
 
                 for item in buy_list:
@@ -239,14 +234,15 @@ class GroceryList:
                         f"item {item_num} "
                         f"|name: {item.name} "
                         f"|store: {item.store} "
-                        f"|cost {item.cost} "
-                        f"|amount {item.amount} "
-                        f"|priority {item.priority} "
-                        f"|buy {item.buy} "
+                        f"|cost: {item.cost} "
+                        f"|amount: {item.amount} "
+                        f"|priority: {item.priority} "
+                        f"|buy: {item.buy} "
                         )
                     
                     f.write(item_string + "\n")
                     item_num += 1
+
                 f.write("\n")
                 f.write(f"The total cost is ${total_cost}")
             
@@ -265,10 +261,10 @@ class GroceryList:
                 f"item {item_num} "
                 f"| name: {item.name} "
                 f"| store: {item.store} "
-                f"| cost {item.cost} "
-                f"| amount {item.amount} "
-                f"| priority {item.priority} "
-                f"| buy {item.buy} "
+                f"| cost: {item.cost} "
+                f"| amount: {item.amount} "
+                f"| priority: {item.priority} "
+                f"| buy: {item.buy} "
 
             )
             
@@ -278,7 +274,7 @@ class GroceryList:
 
     def calculate_total_cost(
             self, 
-            grocery_list:list[object], 
+            grocery_list: list[object], 
             round_cost: bool = False,
             tax: float = 0.08,
             ):
@@ -298,11 +294,10 @@ class GroceryList:
             total_cost += cost
 
         if round_cost:
-            total_cost = round(total_cost)
+            total_cost = round(total_cost, 2)
             
         if tax:
-            tax_cost = total_cost * tax
-            total_cost += tax_cost
+            total_cost += total_cost * tax
 
         return total_cost
     
