@@ -117,7 +117,8 @@ class Launch:
         print(" ")
 
         if len(match_num) > 1:
-            for match_num, match in enumerate(matches, start=1):
+            
+            for match_num, matches in enumerate(matches, start=1):
                 match_string = (
                     f"item {item} "
                         f"|name: {item.name} "
@@ -130,7 +131,9 @@ class Launch:
                 print(match_string)
 
         else:
-            print("No items match the provided search item")
+            print("No items match the provoded search item")
+
+        print(utils.get_line_delimiter)
 
             
 
