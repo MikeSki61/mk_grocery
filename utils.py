@@ -1,6 +1,14 @@
 import json
 
 def save_data(file_path, data):
+
+    """Save a list of dictionaries to the json file
+
+    Args:
+    file-path (str) : The path to the file where the dat should be saved .
+    data (list[dict]): The list of dictionaries to sav. If None or empty, an empty 
+    list will be saved.
+    """
     if not data:
         data = []
 
@@ -20,5 +28,5 @@ def load_data(file_path):
     
 def get_line_delimiter():
      delimiter = "=========="
-
+     
      return delimiter
